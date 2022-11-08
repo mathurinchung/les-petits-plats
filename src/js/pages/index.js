@@ -14,13 +14,6 @@ class App {
     const recipes = RecipeService.getAllRecipe();
 
     this.displayData(recipes);
-
-    const cardsDOM = [ ...document.querySelectorAll(".card") ];
-    cardsDOM.map(card => {
-      const { id, name, ingredients, appliance, ustensils } = card.dataset;
-      const dataset = { id, name, ingredients: ingredients.split(","), appliance, ustensils: ustensils.split(",") }
-      console.log(dataset);
-    });
   }
 }
 
