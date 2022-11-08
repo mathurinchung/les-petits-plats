@@ -1,8 +1,6 @@
 export default class ComponentsTemplate {
   KeywordDOM(type, keyword) {
-    const keywordsContainer = document.querySelector("#keywords");
-
-    keywordsContainer.innerHTML += `
+    return `
       <li class="keyword-item keyword-${type}">
         <span class="keyword-text">${keyword}</span>
         <i class="icon icon-circle-xmark"></i>
