@@ -32,12 +32,9 @@ export default class RecipeTemplate {
   
       ingredientItem += `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`
     }
-
-    let ingredientData = "";
-    for (let i in this._data.ingredients) { ingredientData += (i < this._data.ingredients.length -1) ? `${this._data.ingredients[i].ingredient},` : `${this._data.ingredients[i].ingredient}`; }
   
     return `
-      <article class="card" data-id="${this._data.id}" data-name="${this._data.name}" data-ingredients="${ingredientData}" data-appliance="${this._data.appliance}" data-ustensils="${this._data.ustensils}">
+      <article class="card" data-id="${this._data.id}">
         <figure class="card-img-top"></figure>
         <div class="card-body d-grid">
           <div class="card-heading d-flex justify-content-between align-items-start">
