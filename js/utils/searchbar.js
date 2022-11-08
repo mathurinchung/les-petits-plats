@@ -1,7 +1,7 @@
-export default class SearchbarUtil {
+export default class SearchbarUtils {
   constructor() {}
 
-  searchbarHandler() {
+  handler() {
     const searchbar = document.querySelector("#searchbar");
 
     searchbar.addEventListener("change", () => {});

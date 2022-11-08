@@ -1,17 +1,15 @@
 export default class ComponentsTemplate {
   KeywordDOM(type, keyword) {
     return `
-      <li class="keyword-item keyword-${type}">
-        <span class="keyword-text">${keyword}</span>
+      <li class="keyword-item keyword-item-${type}">
+        <span class="keyword-item-text">${keyword}</span>
         <i class="icon icon-circle-xmark"></i>
       </li>
     `;
   }
 
   DropdownDOM(type, textContent) {
-    const dropdownContainer = document.querySelector("#dropdown");
-
-    dropdownContainer.innerHTML += `
+    return `
       <div class="dropdown dropdown-${type}">
         <button class="btn btn-${type} dropdown-toggle d-flex justify-content-between align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           ${textContent}
