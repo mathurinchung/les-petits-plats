@@ -19,28 +19,28 @@ export default class RecipeModel {
   get ingredients() {
     let ingredientItem = "";
 
-    for (let data of this._ingredients) {
-      const ingredient = data.ingredient;
-      const quantity = (data.quantity !== undefined) ? `:</span> ${data.quantity}` : "</span>";
+    for (let item of this._ingredients) {
+      const ingredient = item.ingredient;
+      const quantity = (item.quantity !== undefined) ? `:</span> ${item.quantity}` : "</span>";
       let unit = "";
-      if (data.unit !== undefined) {
-        if (data.unit === "ml") { unit = "ml" }
-        if (data.unit === "cl") { unit = "cl" }
-        if (data.unit === "litres") { unit = "l" }
-        if (data.unit === "grammes") { unit = "g" }
-        if (data.unit === "kg") { unit = "kg" }
-        if (data.unit === "cuillères à café") { unit = "càc" }
-        if (data.unit === "cuillères à soupe") { unit = " cuillères" }
-        if (data.unit === "sachets") { unit = " sachets" }
-        if (data.unit === "tranches") { unit = " tranches" }
-        if (data.unit === "tasses") { unit = " tasses" }
-        if (data.unit === "tiges") { unit = " tiges" }
-        if (data.unit === "gousses") { unit = " gousses" }
-        if (data.unit === "verres") { unit = " verres" }
-        if (data.unit === "boites") { unit = " boîtes" }
-        if (data.unit === "barquettes") { unit = " barquettes" }
-        if (data.unit === "pincées") { unit = " pincées" }
-        if (data.unit === "feuilles") { unit = " feuilles" }
+      if (item.unit !== undefined) {
+        if (item.unit === "ml") { unit = "ml" }
+        if (item.unit === "cl") { unit = "cl" }
+        if (item.unit === "litres") { unit = "l" }
+        if (item.unit === "grammes") { unit = "g" }
+        if (item.unit === "kg") { unit = "kg" }
+        if (item.unit === "cuillères à café") { unit = "càc" }
+        if (item.unit === "cuillères à soupe") { unit = " cuillères" }
+        if (item.unit === "sachets") { unit = " sachets" }
+        if (item.unit === "tranches") { unit = " tranches" }
+        if (item.unit === "tasses") { unit = " tasses" }
+        if (item.unit === "tiges") { unit = " tiges" }
+        if (item.unit === "gousses") { unit = " gousses" }
+        if (item.unit === "verres") { unit = " verres" }
+        if (item.unit === "boites") { unit = " boîtes" }
+        if (item.unit === "barquettes") { unit = " barquettes" }
+        if (item.unit === "pincées") { unit = " pincées" }
+        if (item.unit === "feuilles") { unit = " feuilles" }
       } else { unit = "" }
   
       ingredientItem += `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`
