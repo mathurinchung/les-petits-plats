@@ -32,7 +32,7 @@ export default class RecipeTemplate {
     }).join("");
   
     return `
-      <article class="card" data-id="${this._data.id}" data-name="${this._data.name}" data-ingredients="${this._data.ingredients.map(data => data.ingredient)}" data-appliance="${this._data.appliance}" data-ustensils="${this._data.ustensils}">
+      <article class="card" data-id="${this._data.id}">
         <figure class="card-img-top"></figure>
         <div class="card-body d-grid">
           <div class="card-heading d-flex justify-content-between align-items-start">
