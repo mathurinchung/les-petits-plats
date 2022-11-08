@@ -10,11 +10,13 @@ class Components {
     componentsTemplate.DropdownDOM("ustensils", "Ustensiles");
   }
 
-  handleComponents() {}
+  handleComponents(recipes) {}
 
   init() {
+    const recipes = RecipeService.getAllRecipe();
+
     this.displayComponents();
-    this.handleComponents();
+    this.handleComponents(recipes);
   }
 }
 
