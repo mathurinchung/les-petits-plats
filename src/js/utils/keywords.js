@@ -3,10 +3,10 @@ export default class KeywordsUtils {
 
   removeKeywordHandler() {}
 
-  keywordsHandler() {
+  handler() {
     const addKeywordDOM = "";
-    const removeKeyWordDOM = [ ...document.querySelectorAll(".keyword-item .icon-circle-xmark") ];
+    const removeKeywordDOM = [ ...document.querySelectorAll(".keyword-item .icon-circle-xmark") ];
 
-    removeKeyWordDOM.addEventListener("click", () => this.removeKeywordHandler());
+    removeKeywordDOM.forEach(el => el.addEventListener("click", () => this.removeKeywordHandler()));
   }
 }
