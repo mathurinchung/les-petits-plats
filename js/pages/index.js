@@ -18,13 +18,6 @@ class App {
     const recipes = RecipeService.getAllRecipe();
 
     this.displayData(recipes);
-
-    const cardsDOM = [ ...document.querySelectorAll(".card") ];
-
-    for (let card of cardsDOM) {
-      const { id, name, ingredients, appliance, ustensils } = card.dataset;
-      console.log({ id, name, ingredients: ingredients.split(","), appliance, ustensils: ustensils.split(",") });
-    }
   }
 }
 
