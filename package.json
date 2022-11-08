@@ -1,0 +1,18 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "[ Les petits plats ] Develop a search tool in JavaScript",
+  "main": "src/js/pages/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@mathurinchung.github.com:mathurinchung/les-petits-plats.git"
+  },
+  "author": "Mathurin Chung",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.27.0"
+  }
+}
