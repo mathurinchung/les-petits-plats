@@ -28,7 +28,7 @@ const recipes = [
           }
       ],
       "time": 10,
-      "description": "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
+      "description": "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.",
       "appliance": "Blender",
       "ustensils": ["cuillère à Soupe", "verres", "presse citron" ]
   },
@@ -65,7 +65,7 @@ const recipes = [
           }
       ],
       "time": 60,
-      "description": "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco",
+      "description": "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco.",
       "appliance": "Saladier",
       "ustensils": ["presse citron"]
   },{
@@ -102,7 +102,7 @@ const recipes = [
           }
       ],
       "time": 80,
-      "description": "Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de tomate, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz",
+      "description": "Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de tomate, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz.",
       "appliance": "Cocotte",
       "ustensils": ["couteau"]
   },{
@@ -139,7 +139,7 @@ const recipes = [
           }
       ],
       "time": 50,
-      "description": "Faire cuire le riz. Une fois le riz cuit, le laisser refroidir. Couper les oeufs dur en quarts ou en lamelle au choix, coupez le tomates en dés, ajouter au riz les oeufs, les tomates, le poisson, le maïs et la vinaigrette. Ajouter au gout de chacun des corniches, olives etc..",
+      "description": "Faire cuire le riz. Une fois le riz cuit, le laisser refroidir. Couper les oeufs dur en quarts ou en lamelle au choix, coupez le tomates en dés, ajouter au riz les oeufs, les tomates, le poisson, le maïs et la vinaigrette. Ajouter au gout de chacun des corniches, olives etc...",
       "appliance": "Cuiseur de riz",
       "ustensils": ["saladier", "passoire"]
   },
@@ -174,11 +174,11 @@ const recipes = [
          {
               "ingredient": "Moutarde de Dijon",
               "quantity": 1,
-              "unite": "cuillères à soupe"
+              "unit": "cuillères à soupe"
          }
       ],
       "time": 45,
-      "description": "Étaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraîche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes",
+      "description": "Étaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraîche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes.",
       "appliance":"Four",
       "ustensils": ["moule à tarte", "râpe à fromage", "couteau"]
   },
@@ -217,7 +217,7 @@ const recipes = [
           }
       ],
       "time": 50,
-      "description": "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraîche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant de positionner les pommes sur la tarte. Finalement verser la préparation à base d'oeufs et de crème fraîche. Laisser cuire au four pendant 30 minutes",
+      "description": "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraîche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant de positionner les pommes sur la tarte. Finalement verser la préparation à base d'oeufs et de crème fraîche. Laisser cuire au four pendant 30 minutes.",
       "appliance": "Four",
       "ustensils": ["moule à tarte", "saladier", "fourchette"]
   },{
@@ -250,7 +250,7 @@ const recipes = [
           }
       ],
       "time": 50,
-      "description": "Étaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crème liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
+      "description": "Étaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crème liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur...",
       "appliance":"Four",
       "ustensils":["moule à tartelettes (6)", "casserole"]
   }, {
@@ -395,7 +395,7 @@ const recipes = [
           }
       ],
       "time": 10,
-      "description": "Commencer par couper les feuilles de salade, ajouter les tomates cerises et le fromage découpé en cubes ou en boules avec la cuillère à melon. Découper le jambon de parme en fines lamelles. Ajouter la pomme elle aussi découpée en petit morceaux. Assaisonnez à votre gout. ",
+      "description": "Commencer par couper les feuilles de salade, ajouter les tomates cerises et le fromage découpé en cubes ou en boules avec la cuillère à melon. Découper le jambon de parme en fines lamelles. Ajouter la pomme elle aussi découpée en petit morceaux. Assaisonnez à votre gout.",
       "appliance": "Saladier",
       "ustensils": ["couteau", "cuillère à melon" ]
   },{
@@ -460,7 +460,7 @@ const recipes = [
           }
       ],
       "time":40,
-      "description":"Cuire les pommes de terre environ 30 minutes. Découper les échalotes finement. Durant la cuisson des pommes de terre. Préparez la vinaigrette avec l'huile d'olive et le vinaigre de cidre. Salez poivrez à discrétion. Dans un saladier, mettre le mâche. Ajouter",
+      "description":"Cuire les pommes de terre environ 30 minutes. Découper les échalotes finement. Durant la cuisson des pommes de terre. Préparez la vinaigrette avec l'huile d'olive et le vinaigre de cidre. Salez poivrez à discrétion. Dans un saladier, mettre le mâche. Ajouter...",
       "appliance": "Casserole",
       "ustensils":["couteau","saladier","cuillère en bois"]
   },
@@ -500,7 +500,7 @@ const recipes = [
 
       ],
       "time": 100,
-      "description":"Mélanger la farine et les oeufs, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel. Laisser reposer 1 heure. Faire les galettes et laisser refroidir. Faire chauffer les saucisses avec du beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes",
+      "description":"Mélanger la farine et les oeufs, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel. Laisser reposer 1 heure. Faire les galettes et laisser refroidir. Faire chauffer les saucisses avec du beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes.",
       "appliance": "Four",
       "ustensils":["poêle à frire","couteau"]
   },
@@ -539,7 +539,7 @@ const recipes = [
           }
       ],
       "time": 60,
-      "description":"Mélangez dans un saladier, la farine, les oeufs, et le lait. Battez jusqu'à avoir une masse homogène. Pendant ce temps faites fondre le beurre et ajoutez en une partie à la pâte à crêpes. Faire fondre le chocolat ( avec le reste du beurre salé ). Lorsque vous chauffez les crêpes. Ajouter le chocolat fondu et les bananes coupées en rondelles. Ajoutez une touche de chantilly pour les gourmands",
+      "description":"Mélangez dans un saladier, la farine, les oeufs, et le lait. Battez jusqu'à avoir une masse homogène. Pendant ce temps faites fondre le beurre et ajoutez en une partie à la pâte à crêpes. Faire fondre le chocolat ( avec le reste du beurre salé ). Lorsque vous chauffez les crêpes. Ajouter le chocolat fondu et les bananes coupées en rondelles. Ajoutez une touche de chantilly pour les gourmands.",
       "appliance": "Poêle à crêpe",
       "ustensils":["saladier", "louche", "cuillère en bois"]
   },
@@ -632,7 +632,7 @@ const recipes = [
           }
       ],
       "time": 10,
-      "description":"Séparez 1/5ème d'Ananas ( une belle tranche qui servira pour la décoration des verres ), mettre le reste coupé en cubes au blender, ajouter la glace à la vanille et le lait. Mixez. Servir et décorer avec l'ananas restant. C'est prêt",
+      "description":"Séparez 1/5ème d'Ananas ( une belle tranche qui servira pour la décoration des verres ), mettre le reste coupé en cubes au blender, ajouter la glace à la vanille et le lait. Mixez. Servir et décorer avec l'ananas restant. C'est prêt.",
       "appliance": "Blender",
       "ustensils":["verres", "couteau"]
   },
@@ -657,7 +657,7 @@ const recipes = [
           {
               "ingredient": "Sucre glace",
               "quantity": 30,
-              "unit":"grammes"
+              "unit": "grammes"
           },
           {
               "ingredient": "Banane",
@@ -946,7 +946,7 @@ const recipes = [
           {
               "ingredient": "Vermicelles",
               "quantity": 1,
-              "unit":"verres"
+              "unit": "verres"
           },
           {
               "ingredient": "Beurre salé",
@@ -955,7 +955,7 @@ const recipes = [
           }
       ],
       "time": 15,
-      "description":"Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une fois prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crème fraîche",
+      "description":"Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une fois prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crème fraîche.",
       "appliance": "Casserole",
       "ustensils":["couteau","cuillère en bois"]
   },
@@ -981,7 +981,7 @@ const recipes = [
           {
               "ingredient": "Beurre",
               "quantity": 50,
-              "unit":"grammes"
+              "unit": "grammes"
           },
           {
               "ingredient": "Crème fraîche",
@@ -1046,7 +1046,7 @@ const recipes = [
           }
       ],
       "time": 60,
-      "description":"Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuire à petit feu pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
+      "description":"Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuire à petit feu pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt.",
       "appliance": "Mixer",
       "ustensils":["casserole", "cuillère en bois"]
   },
@@ -1071,7 +1071,7 @@ const recipes = [
           {
               "ingredient": "Petits poids",
               "quantity": 100,
-              "unit":"grammes"
+              "unit": "grammes"
           },
           {
               "ingredient": "Lardons",
@@ -1080,7 +1080,7 @@ const recipes = [
           }
       ],
       "time": 60,
-      "description":"Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons, une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petit poids et les haricots verts ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier",
+      "description":"Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons, une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petit poids et les haricots verts ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier.",
       "appliance": "Poêle",
       "ustensils":["Couteau", "économe"]
   },
@@ -1147,7 +1147,7 @@ const recipes = [
           {
               "ingredient": "Fromage blanc",
               "quantity": 4,
-              "unit":"cuillères à soupe"
+              "unit": "cuillères à soupe"
           },
           {
               "ingredient": "Jus de citron",
@@ -1209,7 +1209,7 @@ const recipes = [
           {
               "ingredient": "Crème fraîche",
               "quantity": 2,
-              "unit":"cuillères à soupe"
+              "unit": "cuillères à soupe"
           },
           {
               "ingredient": "Cumin",
@@ -1362,7 +1362,7 @@ const recipes = [
           }
       ],
       "time": 40,
-      "description":"Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes au four",
+      "description":"Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes au four.",
       "appliance": "Four",
       "ustensils":["saladier", "couteau","fouet"]
   },
@@ -1374,7 +1374,7 @@ const recipes = [
           {
               "ingredient": "Eau",
               "quantity": 1,
-              "unit": "Litres"
+              "unit": "litres"
           },
           {
               "ingredient": "Citron Vert",
@@ -1417,7 +1417,7 @@ const recipes = [
           }
       ],
       "time": 20,
-      "description":"Séparer les blancs d'oeufs. Faire fondre le chocolat au bain marie. Ajouter les jaunes et le sucre au chocolat hors du feu. Battre les blancs en neige. Ajouter les blancs au mélange de chocolat. Mélangez délicatement avec une spatule. Servir dans un plat ou dans des verres. Mettre au frais",
+      "description":"Séparer les blancs d'oeufs. Faire fondre le chocolat au bain marie. Ajouter les jaunes et le sucre au chocolat hors du feu. Battre les blancs en neige. Ajouter les blancs au mélange de chocolat. Mélangez délicatement avec une spatule. Servir dans un plat ou dans des verres. Mettre au frais.",
       "appliance": "Casserole",
       "ustensils":["fouet", "spatule", "verres"]
   }, 
@@ -1479,7 +1479,7 @@ const recipes = [
           }
       ],
       "time": 50,
-      "description":"Préchauffez le fours à 200°. Étaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit ",
+      "description":"Préchauffez le fours à 200°. Étaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit.",
       "appliance": "Four",
       "ustensils":["rouleau à patisserie", "moule à tarte", "presse citron"]
   }, 
@@ -1506,7 +1506,7 @@ const recipes = [
           {
               "ingredient": "Beurre",
               "quantity": 50,
-              "unit":"grammes"
+              "unit": "grammes"
           },
           {
               "ingredient": "farine",
@@ -1515,7 +1515,7 @@ const recipes = [
           }
       ],
       "time": 15,
-      "description":"Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. Ajouter du sucre après la cuisson. Bien mélanger. Ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une cuillère en bois. Mettre dans des verres",
+      "description":"Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. Ajouter du sucre après la cuisson. Bien mélanger. Ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une cuillère en bois. Mettre dans des verres.",
       "appliance": "Casserole",
       "ustensils":["cuillère en bois"]
   },
@@ -1541,7 +1541,7 @@ const recipes = [
           {
               "ingredient": "Sucre",
               "quantity": 80,
-              "unit":"grammes"
+              "unit": "grammes"
           }
       ],
       "time": 30,
@@ -1576,7 +1576,7 @@ const recipes = [
           {
               "ingredient": "Lait",
               "quantity": 1,
-              "unit": "litre"
+              "unit": "litres"
           },
           {
               "ingredient": "Pruneaux",
@@ -1585,7 +1585,7 @@ const recipes = [
           }
       ],
       "time": 60,
-      "description":"Mélanger la farine avec le sucre et les oeufs en ajoutant du sucre vanillé. Ajouter le lait petit à petit. Ajouter un petit vers de rhum. Verser la masse dans un plat beurré y placer les pruneaux et faire cuire à 200° pendant 45 minutes",
+      "description":"Mélanger la farine avec le sucre et les oeufs en ajoutant du sucre vanillé. Ajouter le lait petit à petit. Ajouter un petit vers de rhum. Verser la masse dans un plat beurré y placer les pruneaux et faire cuire à 200° pendant 45 minutes.",
       "appliance": "Four",
       "ustensils":["fouet", "moule", "verres"]
   },
@@ -1612,11 +1612,11 @@ const recipes = [
           {
               "ingredient": "Crème Fraîche",
               "quantity": 20,
-              "unit":"cl"
+              "unit": "cl"
           }
       ],
       "time": 5,
-      "description":"Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraîche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
+      "description":"Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraîche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir.",
       "appliance": "Saladier",
       "ustensils":["fouet", "verres", "cuillère en bois"]
   },
@@ -1642,7 +1642,7 @@ const recipes = [
           {
               "ingredient": "Champignons de paris",
               "quantity": 1,
-              "unit":"boites"
+              "unit": "boites"
           },
           {
               "ingredient": "Gruyère",
@@ -1651,7 +1651,7 @@ const recipes = [
           }
       ],
       "time": 40,
-      "description":"Étaler la pate a pizza. Écraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes",
+      "description":"Étaler la pate a pizza. Écraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes.",
       "appliance": "Four",
       "ustensils":["rouleau à patisserie", "râpe à fromage","couteau"]
   },
@@ -1675,7 +1675,7 @@ const recipes = [
           {
               "ingredient": "Ananas",
               "quantity": 4,
-              "unit":"tranches"
+              "unit": "tranches"
           },
           {
               "ingredient": "Miel",
@@ -1684,7 +1684,7 @@ const recipes = [
           }
       ],
       "time": 0,
-      "description":"Découper les fruits. Le passer au blender jusqu'à obtenir une texture liquide. Mettre au frais. Servir",
+      "description":"Découper les fruits. Le passer au blender jusqu'à obtenir une texture liquide. Mettre au frais. Servir.",
       "appliance": "Blender",
       "ustensils":["couteau", "verres"]
   },
@@ -1696,7 +1696,7 @@ const recipes = [
           {
               "ingredient": "Pâte feuilletée",
               "quantity": 400,
-              "unit":"grammes"
+              "unit": "grammes"
           },
           {
               "ingredient": "Oeuf",
@@ -1715,12 +1715,14 @@ const recipes = [
           {
               "ingredient": "Sucre glace",
               "quantity": 500,
-              "unit":"grammes"
+              "unit": "grammes"
           }
       ],
       "time": 60,
-      "description":"Préparer la frangipane : Mélanger le sucre la poudre d'amandes, le beurre et les oeufs. Étaler la moitié de la pate feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pate feuilletée. Mettre au four 30 minutes",
+      "description":"Préparer la frangipane : Mélanger le sucre la poudre d'amandes, le beurre et les oeufs. Étaler la moitié de la pate feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pate feuilletée. Mettre au four 30 minutes.",
       "appliance": "Four",
       "ustensils":["rouleau à patisserie","fouet"]
   }
 ]
+
+export default recipes;
