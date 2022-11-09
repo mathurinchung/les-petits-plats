@@ -1,7 +1,5 @@
 export default class ComponentsSubject {
-  constructor() {
-    this.observers = [];
-  }
+  constructor() { this.observers = []; }
 
   attach(observer) { this.observers.push(observer); }
 
