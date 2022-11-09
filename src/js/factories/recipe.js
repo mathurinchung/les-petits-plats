@@ -18,6 +18,7 @@ export default class RecipeFactory {
     const ingredient = item.ingredient;
     const quantity = (item.quantity !== undefined) ? `:</span> ${item.quantity}` : "</span>";
     let unit = "";
+
     switch (item.unit) {
     case "ml": unit = "ml";
       break;
