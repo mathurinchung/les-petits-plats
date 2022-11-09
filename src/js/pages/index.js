@@ -1,5 +1,6 @@
 import RecipeService from "../services/recipe.js";
-// import RecipeFactory from "../factories/recipe.js";
+import RecipeFactory from "../factories/recipe.js";
+import ComponentsTemplate from "../templates/components.js";
 
 class App {
   displayCard(recipes) {
@@ -8,10 +9,27 @@ class App {
     recipesContainer.innerHTML = "";// display recipes cards
   }
 
+  displayDropdown() {
+    const dropdownContainer = document.querySelector("#dropdown");
+    const componentsTemplate = new ComponentsTemplate();
+
+    dropdownContainer.innerHTML  = componentsTemplate.DropdownDOM("ingredients", "Ingredients");
+    dropdownContainer.innerHTML += componentsTemplate.DropdownDOM("appliances", "Appareils");
+    dropdownContainer.innerHTML += componentsTemplate.DropdownDOM("ustensils", "Ustensiles");
+  }
+
+  handleComponents(recipes) {
+    const componentsUtils = new RecipeFactory(recipes, "components");
+
+    componentsUtils.handler();
+  }
+
   init() {
     const recipes = RecipeService.getAllRecipe();
 
     this.displayCard(recipes);
+    this.displayDropdown();
+    this.handleComponents(recipes);
   }
 }
 

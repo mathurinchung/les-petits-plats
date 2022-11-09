@@ -1,12 +1,16 @@
 import RecipeModel from "../models/recipe.js";
 import RecipeTemplate from "../templates/recipe.js";
+import ComponentsUtils from "../utils/components.js";
 
 export default class RecipeFactory {
-  constructor(data) {
+  constructor(data, type) {
     this._data = new RecipeModel(data);
 
-    return new RecipeTemplate(this._data);
+    if (type === "page") return new RecipeTemplate(this._data);
+    if (type === "components") return new ComponentsUtils(this._data);
   }
+
+  #ingredientList() {}
 
   #ingredientItem(item) {
     const ingredient = item.ingredient;
