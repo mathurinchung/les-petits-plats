@@ -6,7 +6,7 @@ export default class RecipeFactory {
   constructor(data, type) {
     this._data = new RecipeModel(data);
 
-    if (type === "page") return new RecipeTemplate(this._data);
+    if (type === "card") return new RecipeTemplate(this._data);
     if (type === "components") return new ComponentsUtils(this._data);
   }
 
