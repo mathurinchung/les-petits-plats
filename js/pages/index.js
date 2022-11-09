@@ -25,9 +25,10 @@ class App {
   }
 
   handleComponents(recipes) {
-    const componentsUtils = new RecipeFactory(recipes, "components");
-
-    componentsUtils.handler();
+    for (let recipe of recipes) {
+      const componentsUtils = new RecipeFactory(recipe, "components");
+      componentsUtils.handler();
+    }
   }
 
   init() {
