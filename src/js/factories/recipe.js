@@ -1,17 +1,21 @@
 import RecipeModel from "../models/recipe.js";
 import RecipeTemplate from "../templates/recipe.js";
+import ComponentsUtils from "../utils/components.js";
 
 export default class RecipeFactory {
-  constructor(data) {
+  constructor(data, type) {
     this._data = new RecipeModel(data);
 
-    const ingredientItem = this._data.ingredients.map(item => {
+    if (type === "page") return new RecipeTemplate(this._data, this.#ingredientList());
+    if (type === "components") return new ComponentsUtils(this._data);
+  }
+
+  #ingredientList() {
+    return this._data.ingredients.map(item => {
       const { ingredient, quantity, unit } = this.#ingredientItem(item);
 
       return `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`;
     }).join("");
-
-    return new RecipeTemplate(this._data, ingredientItem);
   }
 
   #ingredientItem(item) {
