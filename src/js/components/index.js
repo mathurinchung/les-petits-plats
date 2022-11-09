@@ -1,6 +1,6 @@
 import RecipeService from "../services/recipe.js";
 import ComponentsTemplate from "../templates/components.js";
-import ComponentsUtils from "../utils/index.js";
+import ComponentsFactory from "../factories/components.js";
 
 class Components {
   displayComponents() {
@@ -13,7 +13,7 @@ class Components {
   }
 
   handleComponents(recipes) {
-    const componentsUtils = new ComponentsUtils(recipes);
+    const componentsUtils = new ComponentsFactory(recipes);
 
     componentsUtils.handler();
   }
