@@ -8,7 +8,7 @@ class App {
     let recipeCardDOM = "";
 
     for (let recipe of recipes) {
-      const recipeTemplate = new RecipeFactory(recipe, "page");
+      const recipeTemplate = new RecipeFactory(recipe, "card");
       recipeCardDOM += recipeTemplate.RecipeCardDOM();
     }
 
