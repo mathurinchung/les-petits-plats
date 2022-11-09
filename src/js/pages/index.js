@@ -7,7 +7,7 @@ class App {
     const recipesContainer = document.querySelector("#recipes");
 
     recipesContainer.innerHTML = recipes.map(recipe => {
-      const recipeTemplate = new RecipeFactory(recipe, "page");
+      const recipeTemplate = new RecipeFactory(recipe, "card");
       return recipeTemplate.RecipeCardDOM();
     }).join("");
   }
