@@ -5,7 +5,7 @@ class App {
   displayCard(recipes) {
     const recipesContainer = document.querySelector("#recipes");
 
-    recipesContainer.innerHTML = // display recipes cards;
+    recipesContainer.innerHTML = "";// display recipes cards
   }
 
   init() {
