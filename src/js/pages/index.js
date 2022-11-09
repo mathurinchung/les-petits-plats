@@ -22,9 +22,10 @@ class App {
   }
 
   handleComponents(recipes) {
-    const componentsUtils = new RecipeFactory(recipes, "components");
-
-    componentsUtils.handler();
+    return recipes.map(recipe => {
+      const componentsUtils = new RecipeFactory(recipe, "components");
+      componentsUtils.handler();
+    });
   }
 
   init() {
