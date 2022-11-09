@@ -1,5 +1,3 @@
-import IngredientProperty from "./ingredient.js";
-
 export default class RecipeModel {
   constructor(data) {
     this._id = data.id;
@@ -18,17 +16,7 @@ export default class RecipeModel {
 
   get description() { return this._description; }
 
-  get ingredients() {
-    let ingredientItem = "";
-    
-    for (let item of this._ingredients) {
-      const { ingredient, quantity, unit } = IngredientProperty.ingredientItem(item);
-
-      ingredientItem += `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`;
-    }
-
-    return ingredientItem;
-  }
+  get ingredients() { return this._ingredients; }
 
   get appliance() { return this._appliance; }
 

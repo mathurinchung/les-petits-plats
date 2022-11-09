@@ -1,6 +1,7 @@
 export default class RecipeTemplate {
-  constructor(data) {
+  constructor(data, ingredients) {
     this._data = data;
+    this._ingredients = ingredients;
   }
 
   RecipeCardDOM() {
@@ -14,7 +15,7 @@ export default class RecipeTemplate {
               <i class="icon icon-clock" aria-hidden="true"></i> ${this._data.time} min
             </span>
           </div>
-          <ul class="card-ingredients">${this._data.ingredients}</ul>
+          <ul class="card-ingredients">${this._ingredients}</ul>
           <p class="card-description">${this._data.description}</p>
         </div>
       </article>
