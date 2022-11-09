@@ -2,8 +2,9 @@ import RecipeService from "../services/recipe.js";
 import RecipeFactory from "../factories/recipe.js";
 
 class App {
-  displayData(recipes) {
+  displayCard(recipes) {
     const recipesContainer = document.querySelector("#recipes");
+
     recipesContainer.innerHTML = recipes.map(recipe => {
       const recipeTemplate = new RecipeFactory(recipe);
       return recipeTemplate.RecipeCardDOM();
@@ -13,7 +14,7 @@ class App {
   init() {
     const recipes = RecipeService.getAllRecipe();
 
-    this.displayData(recipes);
+    this.displayCard(recipes);
   }
 }
 
