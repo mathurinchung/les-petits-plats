@@ -1,5 +1,5 @@
 export default class IngredientProperty {
-  ingredientItem(item) {
+  static ingredientItem(item) {
     const ingredient = item.ingredient;
     const quantity = (item.quantity !== undefined) ? `:</span> ${item.quantity}` : "</span>";
     let unit = "";
