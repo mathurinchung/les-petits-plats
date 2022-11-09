@@ -1,5 +1,3 @@
-import IngredientProperty from "./ingredient.js";
-
 export default class RecipeModel {
   constructor(data) {
     this._id = data.id;
