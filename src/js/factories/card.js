@@ -1,17 +1,17 @@
 import RecipeModel from "../models/recipe.js";
-import RecipeTemplate from "../templates/recipe.js";
+import CardTemplate from "../templates/card.js";
 
-export default class RecipeFactory {
+export default class CardFactory {
   constructor(data) {
     this._data = new RecipeModel(data);
 
-    return new RecipeTemplate(this._data, this.#ingredientList());
+    return new CardTemplate(this._data, this.#CardingredientList());
   }
 
-  #ingredientList() {
+  #CardingredientList() {
     let ingredientItem = "";
     for (let item of this._data.ingredients) {
-      const { ingredient, quantity, unit } = this.#ingredientItem(item);
+      const { ingredient, quantity, unit } = this.#CardIngredientItem(item);
 
       ingredientItem += `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`;
     }
@@ -19,7 +19,7 @@ export default class RecipeFactory {
     return ingredientItem;
   }
 
-  #ingredientItem(item) {
+  #CardIngredientItem(item) {
     const ingredient = item.ingredient;
     const quantity = (item.quantity !== undefined) ? `:</span> ${item.quantity}` : "</span>";
     let unit = "";
