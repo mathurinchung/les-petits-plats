@@ -1,6 +1,7 @@
 import RecipeService from "../services/recipe.js";
 import CardFactory from "../factories/card.js";
 import DropdownFactory from "../factories/dropdown.js";
+import ComponentsUtils from "../utils/components.js";
 
 class App {
   displayCard(recipes) {
@@ -28,11 +29,18 @@ class App {
     dropdownContainer.innerHTML = dropdownDOM;
   }
 
+  handleComponents(recipes) {
+    const componentsUtils = new ComponentsUtils(recipes);
+
+    componentsUtils.handler();
+  }
+
   init() {
     const recipes = RecipeService.getAllRecipe();
 
     this.displayCard(recipes);
     this.displayDropdown(recipes);
+    this.handleComponents(recipes);
   }
 }
 

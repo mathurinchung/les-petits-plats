@@ -12,7 +12,7 @@ export default class ComponentsUtils {
     const componentsSubject = new ComponentsSubject();
     const searchbarUtils = new SearchbarUtils();
     const keywordsUtils = new KeywordsUtils();
-    const dropdownUtils = new DropdownUtils(this._data);
+    const dropdownUtils = new DropdownUtils();
 
     componentsSubject.attach(searchbarUtils);
     componentsSubject.attach(keywordsUtils);
