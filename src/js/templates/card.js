@@ -1,10 +1,10 @@
-export default class RecipeTemplate {
+export default class CardTemplate {
   constructor(data, ingredients) {
     this._data = data;
     this._ingredients = ingredients;
   }
 
-  RecipeCardDOM() {
+  CardDOM() {
     return `
       <article class="card" data-id="${this._data.id}">
         <figure class="card-img-top"></figure>

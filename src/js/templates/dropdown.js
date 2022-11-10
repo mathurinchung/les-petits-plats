@@ -1,11 +1,8 @@
-export default class ComponentsTemplate {
-  KeywordDOM(type, keyword) {
-    return `
-      <li class="keyword-item keyword-item-${type}">
-        <span class="keyword-item-text">${keyword}</span>
-        <i class="icon icon-circle-xmark"></i>
-      </li>
-    `;
+export default class DropdownTemplate {
+  constructor(type, textContent, fn) {
+    this.type = type;
+    this.textContent = textContent;
+    this.fn = fn;
   }
 
   DropdownDOM(type, textContent) {
@@ -15,7 +12,7 @@ export default class ComponentsTemplate {
           ${textContent}
           <i class="icon icon-chevron-down" aria-hidden="true"></i>
         </button>
-        <ul class="dropdown-menu"></ul>
+        <ul class="dropdown-menu">${this.fn}</ul>
       </div>
     `;
   }
