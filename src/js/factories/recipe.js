@@ -1,13 +1,11 @@
 import RecipeModel from "../models/recipe.js";
 import RecipeTemplate from "../templates/recipe.js";
-import ComponentsUtils from "../utils/components.js";
 
 export default class RecipeFactory {
-  constructor(data, type) {
+  constructor(data) {
     this._data = new RecipeModel(data);
 
-    if (type === "card") return new RecipeTemplate(this._data, this.#ingredientList());
-    if (type === "components") return new ComponentsUtils(this._data);
+    return new RecipeTemplate(this._data, this.#ingredientList());
   }
 
   #ingredientList() {
