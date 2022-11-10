@@ -8,23 +8,23 @@ export default class DropdownFactory {
 
     if (this.type === "ingredients") {
       this.textContent = "Ingredients";
-      this.list = this.#ingredientList();
+      this.list = this.#DropdownIngredientsList();
     } else if (this.type === "appliances") {
       this.textContent = "Appareils";
-      this.list = this.#appliancesList();
+      this.list = this.#DropdownAppliancesList();
     } else if (this.type === "ustensils") {
       this.textContent = "Ustensiles";
-      this.list = this.#ustensilsList();
+      this.list = this.#DropdownUstensilsList();
     }
 
-    return new DropdownTemplate(this.type, this.textContent, this.#dropdownList());
+    return new DropdownTemplate(this.type, this.textContent, this.#DropdownList());
   }
 
-  #dropdownList() {}
+  #DropdownList() {}
 
-  #ingredientList() {}
+  #DropdownIngredientsList() {}
 
-  #appliancesList() {}
+  #DropdownAppliancesList() {}
 
-  #ustensilsList() {}
+  #DropdownUstensilsList() {}
 }
