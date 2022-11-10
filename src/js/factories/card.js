@@ -5,18 +5,18 @@ export default class CardFactory {
   constructor(data) {
     this._data = new RecipeModel(data);
 
-    return new CardTemplate(this._data, this.#ingredientList());
+    return new CardTemplate(this._data, this.#CardIngredientList());
   }
 
-  #ingredientList() {
+  #CardIngredientList() {
     return this._data.ingredients.map(item => {
-      const { ingredient, quantity, unit } = this.#ingredientItem(item);
+      const { ingredient, quantity, unit } = this.#CardIngredientItem(item);
 
       return `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`;
     }).join("");
   }
 
-  #ingredientItem(item) {
+  #CardIngredientItem(item) {
     const ingredient = item.ingredient;
     const quantity = (item.quantity !== undefined) ? `:</span> ${item.quantity}` : "</span>";
     let unit = "";

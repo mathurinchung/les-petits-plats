@@ -8,21 +8,21 @@ export default class DropdownFactory {
 
     if (this.type === "ingredients") {
       this.textContent = "Ingredients";
-      this.list = this.#ingredientList();
+      this.list = this.#DropdownIngredientsList();
     } else if (this.type === "appliances") {
       this.textContent = "Appareils";
-      this.list = this.#appliancesList();
+      this.list = this.#DropdownAppliancesList();
     } else if (this.type === "ustensils") {
       this.textContent = "Ustensiles";
-      this.list = this.#ustensilsList();
+      this.list = this.#DropdownUstensilsList();
     }
 
-    return new DropdownTemplate(this.type, this.textContent, this.#dropdownList());
+    return new DropdownTemplate(this.type, this.textContent, this.#DropdownList());
   }
 
-  #dropdownList() { return this.list.map(item => `<li class="dropdown-item">${item}</li>`).join(""); }
+  #DropdownList() { return this.list.map(item => `<li class="dropdown-item">${item}</li>`).join(""); }
 
-  #ingredientList() {
+  #DropdownIngredientsList() {
     const arr = new Set();
 
     this._data.map(item => {
@@ -33,7 +33,7 @@ export default class DropdownFactory {
     return [ ...arr ];
   }
 
-  #appliancesList() {
+  #DropdownAppliancesList() {
     const arr = new Set();
 
     this._data.map(item => {
@@ -44,7 +44,7 @@ export default class DropdownFactory {
     return [ ...arr ];
   }
 
-  #ustensilsList() {
+  #DropdownUstensilsList() {
     const arr = new Set();
 
     this._data.map(item => {
