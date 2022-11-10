@@ -1,11 +1,11 @@
 import RecipeModel from "../models/recipe.js";
-import RecipeTemplate from "../templates/recipe.js";
+import CardTemplate from "../templates/card.js";
 
-export default class RecipeFactory {
+export default class CardFactory {
   constructor(data) {
     this._data = new RecipeModel(data);
 
-    return new RecipeTemplate(this._data, this.#ingredientList());
+    return new CardTemplate(this._data, this.#ingredientList());
   }
 
   #ingredientList() {
