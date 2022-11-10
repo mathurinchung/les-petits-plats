@@ -1,6 +1,6 @@
 import RecipeService from "../services/recipe.js";
 import ComponentsTemplate from "../templates/components.js";
-// import ComponentsUtils from "../utils/components.js";
+import ComponentsUtils from "../utils/components.js";
 
 export default class Components {
   displayDropdown() {
@@ -12,7 +12,11 @@ export default class Components {
     dropdownContainer.innerHTML += componentsTemplate.DropdownDOM("ustensils", "Ustensiles");
   }
 
-  // handleComponents(recipes) {}
+  handleComponents(recipes) {
+    const componentsUtils = new ComponentsUtils(recipes);
+
+    componentsUtils.handler();
+  }
 
   init() {
     const recipes = RecipeService.getAllRecipe();
