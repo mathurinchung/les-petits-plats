@@ -18,8 +18,6 @@ class App {
     const recipes = RecipeService.getAllRecipe();
 
     this.displayCard(recipes);
-    this.displayDropdown();
-    this.handleComponents(recipes);
   }
 }
 
