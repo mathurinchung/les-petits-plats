@@ -5,11 +5,11 @@ export default class DropdownTemplate {
     this.fn = fn;
   }
 
-  DropdownDOM(type, textContent) {
+  DropdownDOM() {
     return `
-      <div class="dropdown dropdown-${type}">
-        <button class="btn btn-${type} dropdown-toggle d-flex justify-content-between align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          ${textContent}
+      <div class="dropdown dropdown-${this.type}">
+        <button class="btn btn-${this.type} dropdown-toggle d-flex justify-content-between align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          ${this.textContent}
           <i class="icon icon-chevron-down" aria-hidden="true"></i>
         </button>
         <ul class="dropdown-menu">${this.fn}</ul>
