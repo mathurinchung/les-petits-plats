@@ -14,13 +14,13 @@ export default class RecipeFactory {
   IngredientsList() {
     const arr = new Set();
 
-    this._data.map(item => {
+    for (let item of this._data) {
       const recipe = new RecipeModel(item);
-      recipe.ingredients.map(item => {
+      for (let item of recipe.ingredients) {
         const string = this.#setString(item.ingredient);
         arr.add(string.trim());
-      });
-    });
+      }
+    }
 
     return [ ...arr ];
   }
@@ -28,11 +28,11 @@ export default class RecipeFactory {
   AppliancesList() {
     const arr = new Set();
 
-    this._data.map(item => {
+    for (let item of this._data) {
       const recipe = new RecipeModel(item);
       const string = this.#setString(recipe.appliance);
       arr.add(string.trim());
-    });
+    }
 
     return [ ...arr ];
   }
@@ -40,13 +40,13 @@ export default class RecipeFactory {
   UstensilsList() {
     const arr = new Set();
 
-    this._data.map(item => {
+    for (let item of this._data) {
       const recipe = new RecipeModel(item);
-      recipe.ustensils.map(item => {
+      for (let item of recipe.ustensils) {
         const string = this.#setString(item);
         arr.add(string.trim());
-      });
-    });
+      }
+    }
 
     return [ ...arr ];
   }
