@@ -23,8 +23,8 @@ class App {
     }).join("");
   }
 
-  handleComponents(recipes) {
-    const componentsUtils = new ComponentsUtils(recipes);
+  handleComponents() {
+    const componentsUtils = new ComponentsUtils();
 
     componentsUtils.handler();
   }
@@ -34,7 +34,7 @@ class App {
 
     this.displayCard(recipes);
     this.displayDropdown(recipes);
-    this.handleComponents(recipes);
+    this.handleComponents();
   }
 }
 
