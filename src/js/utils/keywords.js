@@ -6,6 +6,6 @@ export default class KeywordsUtils {
   handler() {
     const removeKeywordDOM = [ ...document.querySelectorAll(".keyword-item .icon-circle-xmark") ];
 
-    removeKeywordDOM.forEach(el => el.addEventListener("click", () => this.removeKeywordHandler()));
+    removeKeywordDOM.forEach(el => el.onclick = () => this.removeKeywordHandler());
   }
 }
