@@ -27,7 +27,7 @@ export default class DropdownFactory {
     let dropdownItem = "";
 
     for (let item of this.list) {
-      dropdownItem += `<li class="dropdown-item">${item}</li>`;
+      dropdownItem += `<li class="dropdown-item">${item.split(" (", 1)}</li>`;
     }
 
     return dropdownItem;
