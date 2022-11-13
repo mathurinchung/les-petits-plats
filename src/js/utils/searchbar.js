@@ -1,14 +1,13 @@
 export default class SearchbarUtils {
   constructor() {}
 
-  searchbarHandler() {
-    return e => console.log(e.target.value);
-  }
+  searchbarFilter() {}
+
+  searchbarHandler() {}
 
   handler() {
     const searchbar = document.querySelector("#searchbar");
-    const searchbarHandler = this.searchbarHandler();
-
-    searchbar.addEventListener("input", searchbarHandler);
+    
+    searchbar.oninput = e => console.log(e.target.value);
   }
 }
