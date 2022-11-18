@@ -1,9 +1,8 @@
 export default class DropdownTemplate {
-  constructor(type, textContent, placeholder, fn) {
+  constructor(type, textContent, placeholder) {
     this.type = type;
     this.textContent = textContent;
     this.placeholder = placeholder;
-    this.fn = fn;
   }
 
   DropdownDOM() {
@@ -15,7 +14,7 @@ export default class DropdownTemplate {
           <i class="icon icon-chevron-down" aria-hidden="true"></i>
         </form>
 
-        <ul class="dropdown-list">${this.fn}</ul>
+        <ul class="dropdown-list dropdown-list-${this.type}"></ul>
       </div>
     `;
   }
