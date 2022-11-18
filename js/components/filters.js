@@ -7,11 +7,11 @@ export default class FiltersComponent {
   }
 
   #displayFilters(state) {
-    state.filterType.map(type => {
+    for (const type of state.filterType) {
       const dropdownListElement = document.querySelector(".dropdown-list-" + type);
       const filtersFactory = new FiltersFactory(type, state.recipes);
       dropdownListElement.innerHTML = filtersFactory.DropdownListDOM();
-    });
+    }
   }
 
   set(state) { state.recipes = this.#setFilters(state); }

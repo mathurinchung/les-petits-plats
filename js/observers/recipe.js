@@ -4,7 +4,7 @@ export default class RecipeSubject {
   }
 
   attach(type, observer) {
-    this.observers[type].push(observer);
+    this.observers[type][this.observers[type].length] = observer; // change method
   }
 
   // detach(observer) {
@@ -13,8 +13,20 @@ export default class RecipeSubject {
 
   dispatch(type, state) {
     if (this.observers[type].length > 0) {
-      if (type === "set") return this.observers[type].forEach(obs => obs.set(state));
-      if (type === "update") return this.observers[type].forEach(obs => obs.update(state));
+      if (type === "set") {
+        const arr = [];
+        for (const obs of this.observers[type]) {
+          arr[arr.length] = obs.set(state);
+        }
+        return arr;
+      }
+      if (type === "update") {
+        const arr = [];
+        for (const obs of this.observers[type]) {
+          arr[arr.length] = obs.update(state);
+        }
+        return arr;
+      }
     }
   }
 }

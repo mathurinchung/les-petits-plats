@@ -5,7 +5,13 @@ export default class CardComponent {
     const recipesContainer = document.querySelector("#recipes");
 
     const cardFactory = new CardFactory(recipes);
-    return recipesContainer.innerHTML = cardFactory.map(recipe => recipe.CardDOM()).join("");
+    let recipesCardDOM = [];
+
+    for (const recipe of cardFactory) {
+      recipesCardDOM += recipe.CardDOM();
+    }
+
+    recipesContainer.innerHTML = recipesCardDOM;
   }
 
   update(state) { this.#displayCard(state.recipes.all); }
