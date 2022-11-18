@@ -31,7 +31,6 @@ export default class SearchbarComponent {
 
   handleSearchbar(state) {
     const setState = { ...state };
-    console.log(setState);
     const searchbarElement = document.querySelector("#searchbar");
 
     this.searchForm.reset();

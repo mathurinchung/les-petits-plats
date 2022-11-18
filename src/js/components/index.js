@@ -18,7 +18,6 @@ export default class Components {
 
     const dropdownComponent = new DropdownComponent();
     dropdownComponent.displayDropdown(state);
-    // dropdownComponent.handleDropdown(state);
     state.subject.attach("update", dropdownComponent);
 
     const searchbarComponent = new SearchbarComponent();
