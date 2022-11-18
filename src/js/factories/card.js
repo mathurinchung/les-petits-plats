@@ -1,15 +1,14 @@
-import RecipeModel from "../models/recipe.js";
 import CardTemplate from "../templates/card.js";
 
 export default class CardFactory {
-  constructor(data) {
-    this._data = new RecipeModel(data);
+  constructor(recipes) {
+    this.recipes = recipes;
 
-    return new CardTemplate(this._data, this.#CardIngredientList());
+    return this.recipes.map(recipe => new CardTemplate(recipe, this.#CardIngredientList(recipe)));
   }
 
-  #CardIngredientList() {
-    return this._data.ingredients.map(item => {
+  #CardIngredientList(recipe) {
+    return recipe.ingredients.map(item => {
       const { ingredient, quantity, unit } = this.#CardIngredientItem(item);
 
       return `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`;
