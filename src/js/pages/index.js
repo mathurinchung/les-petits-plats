@@ -1,34 +1,24 @@
 import RecipeService from "../services/recipe.js";
-// import CardFactory from "../factories/card.js";
-// import DropdownFactory from "../factories/dropdown.js";
-import ComponentsUtils from "../utils/components.js";
+import RecipeFactory from "../factories/recipe.js";
+import RecipeSubject from "../observers/recipe.js";
+import Components from "../components/index.js";
 
 class App {
-  displayCard(recipes) {
-    const recipesContainer = document.querySelector("#recipes");
-
-    recipesContainer.innerHTML = "";// display recipes cards
-  }
-
-  displayDropdown(recipes) {
-    const dropdownContainer = document.querySelector("#dropdown");
-    // const dropdownType = [ "ingredients", "appliances", "ustensils" ];
-
-    dropdownContainer.innerHTML = ""; // display dropdown element
-  }
-
-  handleComponents(recipes) {
-    const componentsUtils = new ComponentsUtils(recipes);
-
-    componentsUtils.handler();
+  constructor() {
+    this.state = { data: [], recipes: {}, keywords: [], filterType: [ "ingredients", "appliances", "ustensils" ], subject: {} }; // init state
   }
 
   init() {
-    const recipes = RecipeService.getAllRecipe();
+    this.state.data = RecipeService.getAllRecipes(); // init Data (State)
+    this.state.recipes = new RecipeFactory(this.state.data); // init Recipes (State)
+    this.state.subject = new RecipeSubject(); // init Subject (State)
 
-    this.displayCard(recipes);
-    this.displayDropdown(recipes);
-    this.handleComponents(recipes);
+    const components = new Components();
+    components.init(this.state); // init Components
+
+    this.state.subject.dispatch("set", this.state);
+    this.state.subject.dispatch("update", this.state);
+    // console.log("State: ", this.state);
   }
 }
 
