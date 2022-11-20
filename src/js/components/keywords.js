@@ -26,7 +26,7 @@ export default class KeywordsComponent {
 
     const setState = { ...state };
     setState.keywords.push(element.textContent);
-    state.subject.dispatch("set", setState);
+    state.subject.dispatch("keywords", setState);
     state.subject.dispatch("cards", setState);
     const setFilters = new FiltersListFactory(setState.recipes);
     state.subject.dispatch("filters", state, setFilters);
@@ -44,7 +44,7 @@ export default class KeywordsComponent {
         state.keywords = state.keywords.filter(keyword => keyword !== element.textContent.trim());
         const setState = { ...state };
         setState.recipes = [ ...state.recipes ];
-        state.subject.dispatch("set", setState);
+        state.subject.dispatch("keywords", setState);
         state.subject.dispatch("cards", setState);
         const setFilters = new FiltersListFactory(setState.recipes);
         state.subject.dispatch("filters", state, setFilters);

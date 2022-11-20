@@ -42,7 +42,7 @@ export default class SearchbarComponent {
 
     searchbarElement.oninput = e => {
       setState.recipes = this.#handleOnInputSearchbar(e, state);
-      state.subject.dispatch("set", setState);
+      state.subject.dispatch("keywords", setState);
       state.subject.dispatch("cards", setState);
       const setFilters = new FiltersListFactory(setState.recipes);
       state.subject.dispatch("filters", state, setFilters);
@@ -50,7 +50,7 @@ export default class SearchbarComponent {
       if (this.searchInputIcon.classList.contains("icon-circle-xmark")) {
         this.searchInputIcon.onclick = () => {
           setState.recipes = this.#handleClearInput(state);
-          state.subject.dispatch("set", setState);
+          state.subject.dispatch("keywords", setState);
           state.subject.dispatch("cards", setState);
           const setFilters = new FiltersListFactory(setState.recipes);
           state.subject.dispatch("filters", state, setFilters);

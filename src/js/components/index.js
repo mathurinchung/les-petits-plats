@@ -12,7 +12,7 @@ export default class Components {
     const dropdownComponent = new DropdownComponent();
     const searchbarComponent = new SearchbarComponent();
 
-    state.subject.attach("set", keywordsComponents);
+    state.subject.attach("keywords", keywordsComponents);
     state.subject.attach("cards", cardComponent);
     state.subject.attach("filters", filtersComponent);
     state.subject.attach("handle", dropdownComponent);

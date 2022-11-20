@@ -53,7 +53,7 @@ export default class DropdownComponent {
         e.stopPropagation();
 
         const setState = { ...state };
-        state.subject.dispatch("set", setState);
+        state.subject.dispatch("keywords", setState);
 
         const dropdownItemElements = element.querySelectorAll(".dropdown-item");
         const setFilters = new FiltersListFactory(setState.recipes);
