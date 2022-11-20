@@ -1,3 +1,4 @@
+import { FiltersListFactory } from "../factories/recipe.js";
 import SearchUtils from "../utils/search.js";
 
 export default class SearchbarComponent {
@@ -6,32 +7,31 @@ export default class SearchbarComponent {
     this.searchInputIcon = this.searchForm.querySelector(".icon");
   }
 
-  #handleClearInput(setState) {
+  #handleClearInput(state) {
     this.searchForm.reset();
     this.searchInputIcon.className = "icon icon-magnifying-glass";
-    return setState.recipes.all;
+    return state.recipes;
   }
 
-  #handleOnInputSearchbar(e, setState) {
-    const searchUtils = new SearchUtils(setState);
+  #handleOnInputSearchbar(e, state) {
+    const searchUtils = new SearchUtils(state);
     const searchbarValue = e.target.value;
 
-    if (searchbarValue.length >= 3) { return searchUtils.handleSearch("recipes", searchbarValue); }
+    if (searchbarValue.length >= 3) { return searchUtils.handle("recipes", searchbarValue); }
 
     if (searchbarValue.length >= 1) {
       this.searchInputIcon.className = "icon icon-circle-xmark";
-      return setState.recipes.all;
+      return state.recipes;
     }
 
     if (searchbarValue.length === 0) {
       this.searchInputIcon.className = "icon icon-magnifying-glass";
-      return setState.recipes.all;
+      return state.recipes;
     }
   }
 
-  handleSearchbar(state) {
+  handle(state) {
     const setState = { ...state };
-    console.log(setState);
     const searchbarElement = document.querySelector("#searchbar");
 
     this.searchForm.reset();
@@ -41,15 +41,19 @@ export default class SearchbarComponent {
     };
 
     searchbarElement.oninput = e => {
-      state.recipes = { ...state.recipes, all: this.#handleOnInputSearchbar(e, setState) };
-      state.subject.dispatch("set", state);
-      state.subject.dispatch("update", state);
+      setState.recipes = this.#handleOnInputSearchbar(e, state);
+      state.subject.dispatch("set", setState);
+      state.subject.dispatch("cards", setState);
+      const setFilters = new FiltersListFactory(setState.recipes);
+      state.subject.dispatch("filters", state, setFilters);
 
       if (this.searchInputIcon.classList.contains("icon-circle-xmark")) {
         this.searchInputIcon.onclick = () => {
-          state.recipes = { ...state.recipes, all: this.#handleClearInput(setState) };
-          state.subject.dispatch("set", state);
-          state.subject.dispatch("update", state);
+          setState.recipes = this.#handleClearInput(state);
+          state.subject.dispatch("set", setState);
+          state.subject.dispatch("cards", setState);
+          const setFilters = new FiltersListFactory(setState.recipes);
+          state.subject.dispatch("filters", state, setFilters);
         };
       }
     };

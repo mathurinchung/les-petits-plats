@@ -1,13 +1,15 @@
 import KeywordTemplate from "../templates/keyword.js";
+import { FiltersListFactory } from "../factories/recipe.js";
 import SearchUtils from "../utils/search.js";
 
 export default class KeywordsComponent {
-  #setKeywords(state) {
-    const searchUtils = new SearchUtils(state);
-    return searchUtils.handleSearch("recipes");
+  set(state) {
+    const searchbarElement = document.querySelector("#searchbar");
+    const setRecipes = new SearchUtils(state).handle("recipes", searchbarElement.value);
+    state.recipes = setRecipes;
   }
 
-  #displayKeyword(type, keyword) {
+  #display(type, keyword) {
     const keywordTemplate = new KeywordTemplate();
 
     return keywordTemplate.KeywordDOM(type, keyword);
@@ -18,30 +20,35 @@ export default class KeywordsComponent {
 
     state.filterType.map(type => {
       if (element.parentElement.classList.contains(`dropdown-list-${type}`)) {
-        document.querySelector(`.keyword-list-${type}`).innerHTML += this.#displayKeyword(type, e.target.textContent);
+        document.querySelector(`.keyword-list-${type}`).innerHTML += this.#display(type, e.target.textContent);
       }
     });
 
-    state.keywords.push(element.textContent);
-    state.subject.dispatch("set", state);
-    state.subject.dispatch("update", state);
+    const setState = { ...state };
+    setState.keywords.push(element.textContent);
+    state.subject.dispatch("set", setState);
+    state.subject.dispatch("cards", setState);
+    const setFilters = new FiltersListFactory(setState.recipes);
+    state.subject.dispatch("filters", state, setFilters);
   }
 
   handleRemoveKeywords(state) {
     const keywordElements = document.querySelectorAll(".keyword-item");
+    // console.log(state);
 
     keywordElements.forEach(element => {
       element.querySelector(".icon-circle-xmark").onclick = () => {
         element.remove();
-        
+
         if (document.querySelectorAll(".keyword-item").length === 0) document.querySelector("#keywords").classList.remove("show");
         state.keywords = state.keywords.filter(keyword => keyword !== element.textContent.trim());
-        state.recipes.all = [ ...state.data ];
-        state.subject.dispatch("set", state);
-        state.subject.dispatch("update", state);
+        const setState = { ...state };
+        setState.recipes = [ ...state.recipes ];
+        state.subject.dispatch("set", setState);
+        state.subject.dispatch("cards", setState);
+        const setFilters = new FiltersListFactory(setState.recipes);
+        state.subject.dispatch("filters", state, setFilters);
       };
     });
   }
-
-  set(state) { state.recipes = { ...state.recipes, all: this.#setKeywords(state) }; }
 }

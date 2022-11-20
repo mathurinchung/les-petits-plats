@@ -1,12 +1,12 @@
 import DropdownFactory from "../factories/dropdown.js";
-import KeywordsComponent from "./keywords.js";
+import { FiltersListFactory } from "../factories/recipe.js";
 import SearchUtils from "../utils/search.js";
 
 export default class DropdownComponent {
-  displayDropdown(state) {
+  display({ filterType }) {
     const dropdownContainer = document.querySelector("#dropdown");
 
-    dropdownContainer.innerHTML = state.filterType.map(type => {
+    dropdownContainer.innerHTML = filterType.map(type => {
       const dropdownTemplate = new DropdownFactory(type);
       return dropdownTemplate.DropdownDOM();
     }).join("");
@@ -27,20 +27,18 @@ export default class DropdownComponent {
     const itemTextContent = dropdownItemElements.map(item => item.textContent);
 
     if (inputValue.length >= 3) {
-      if (element.classList.contains("dropdown-ingredients"))  return { ingredients: searchUtils.handleSearch("filters", inputValue, itemTextContent) };
-      if (element.classList.contains("dropdown-appliances"))  return { appliances: searchUtils.handleSearch("filters", inputValue, itemTextContent) };
-      if (element.classList.contains("dropdown-ustensils"))  return { ustensils: searchUtils.handleSearch("filters", inputValue, itemTextContent) };
+      if (element.classList.contains("dropdown-ingredients")) return { ingredients: searchUtils.handle("filters", inputValue, itemTextContent) };
+      if (element.classList.contains("dropdown-appliances")) return { appliances: searchUtils.handle("filters", inputValue, itemTextContent) };
+      if (element.classList.contains("dropdown-ustensils")) return { ustensils: searchUtils.handle("filters", inputValue, itemTextContent) };
     }
   }
 
-  handleDropdown(state) {
-    const keywordsComponent = new KeywordsComponent();
+  handle(state) {
     const dropdownElements = document.querySelectorAll(".dropdown");
 
     dropdownElements.forEach(element => {
       const filterDropdownElements = [ ...dropdownElements ].filter(el => el !== element);
       const dropdownInputElement = element.querySelector(".form-control");
-      const dropdownItemElements = element.querySelectorAll(".dropdown-item");
 
       element.onclick = e => {
         e.preventDefault();
@@ -50,31 +48,19 @@ export default class DropdownComponent {
       };
 
       dropdownInputElement.onclick = e => e.stopPropagation();
-
       dropdownInputElement.oninput = e => {
         e.preventDefault();
         e.stopPropagation();
 
         const setState = { ...state };
-        state.subject.dispatch("set", state);
-        state.recipes = { ...state.recipes , ...this.#handleOnInputDropdown(e, setState, element, [ ...dropdownItemElements ]) };
-        state.subject.dispatch("update", state);
+        state.subject.dispatch("set", setState);
+
+        const dropdownItemElements = element.querySelectorAll(".dropdown-item");
+        const setFilters = new FiltersListFactory(setState.recipes);
+        state.subject.dispatch("filters", setState, { ...setFilters , ...this.#handleOnInputDropdown(e, setState, element, [ ...dropdownItemElements ]) });
       };
-
-      dropdownItemElements.forEach(element => {
-        element.onclick = e => {
-          e.stopPropagation();
-          dropdownInputElement.value = "";
-          keywordsComponent.handleAddKeyword(e, state, element);
-          keywordsComponent.handleRemoveKeywords(state);
-        };
-
-        document.querySelectorAll(".keyword-item-text").forEach(keyword => (keyword.textContent === element.textContent) && element.classList.add("active"));
-      });
 
       document.body.onclick = () => this.#handleCloseDropdown(dropdownElements);
     });
   }
-
-  update(state) { this.handleDropdown(state); }
 }

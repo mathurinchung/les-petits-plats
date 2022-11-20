@@ -2,7 +2,7 @@ import StringUtils from "./string.js";
 
 export default class SearchUtils {
   constructor(state) {
-    this.allRecipes = state.recipes.all;
+    this.recipes = state.recipes;
     this.tags = state.keywords;
     this.tools = new StringUtils();
   }
@@ -26,11 +26,9 @@ export default class SearchUtils {
     );
   }
 
-  #handleSearchFilter(formatText, keyword, filter) {
-    return formatText(filter).includes(formatText(keyword));
-  }
+  #handleSearchFilter(formatText, keyword, filter) { return formatText(filter).includes(formatText(keyword)); }
 
-  handleSearch(type, inputValue = "", data = this.allRecipes) {
+  handle(type, inputValue = "", data = this.recipes) {
     const { formatText } = this.tools;
     const inputValueSplit = inputValue.split(" ");
     const keywords = this.#handleKeywords(inputValueSplit);

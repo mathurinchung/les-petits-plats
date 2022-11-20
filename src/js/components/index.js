@@ -6,22 +6,18 @@ import SearchbarComponent from "./searchbar.js";
 
 export default class Components {
   init(state) {
-    const cardComponent = new CardComponent();
-    state.subject.attach("update", cardComponent);
-
     const keywordsComponents = new KeywordsComponent();
-    state.subject.attach("set", keywordsComponents);
-
+    const cardComponent = new CardComponent();
     const filtersComponent = new FiltersComponent();
-    state.subject.attach("set", filtersComponent);
-    state.subject.attach("update", filtersComponent);
-
     const dropdownComponent = new DropdownComponent();
-    dropdownComponent.displayDropdown(state);
-    // dropdownComponent.handleDropdown(state);
-    state.subject.attach("update", dropdownComponent);
-
     const searchbarComponent = new SearchbarComponent();
-    searchbarComponent.handleSearchbar(state);
+
+    state.subject.attach("set", keywordsComponents);
+    state.subject.attach("cards", cardComponent);
+    state.subject.attach("filters", filtersComponent);
+    state.subject.attach("handle", dropdownComponent);
+    state.subject.attach("handle", searchbarComponent);
+
+    dropdownComponent.display(state);
   }
 }
