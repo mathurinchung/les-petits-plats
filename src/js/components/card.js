@@ -1,18 +1,14 @@
 import CardFactory from "../factories/card.js";
 
 export default class CardComponent {
-  #displayCard(recipes) {
+  display(state) {
     const recipesContainer = document.querySelector("#recipes");
 
-    const cardFactory = new CardFactory(recipes);
-    let recipesCardDOM = [];
+    const cardFactory = new CardFactory(state.recipes);
 
-    for (const recipe of cardFactory) {
-      recipesCardDOM += recipe.CardDOM();
-    }
+    const recipesCardDOM = [];
+    for (const recipe of cardFactory) { recipesCardDOM[recipesCardDOM.length] = recipe.CardDOM(); }// map method
 
-    recipesContainer.innerHTML = recipesCardDOM;
+    recipesContainer.innerHTML = recipesCardDOM.join("");
   }
-
-  update(state) { this.#displayCard(state.recipes.all); }
 }

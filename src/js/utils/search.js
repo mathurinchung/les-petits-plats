@@ -2,9 +2,9 @@ import StringUtils from "./string.js";
 
 export default class SearchUtils {
   constructor(state) {
-    this.allRecipes = state.recipes.all;
+    this.recipes = state.recipes;
     this.tags = state.keywords;
-    this.tools = new StringUtils();
+    // this.tools = new StringUtils();
   }
 
   #handleKeywords(inputValueSplit) {
@@ -13,39 +13,58 @@ export default class SearchUtils {
   }
 
   #handleSearchRecipe(formatText, keyword, recipe) {
-    const ingredientsList = recipe => recipe.ingredients.map(item => formatText(item.ingredient)).join(" ");
+    const formatKeyword = formatText(keyword);
+    const recipeName =  formatText(recipe.name);
+    const recipeDescription =  formatText(recipe.description);
+    const ingredientsList = recipe => {
+      const arr = [];
+      for (const item of recipe.ingredients) { arr[arr.length] = formatText(item.ingredient); }
+      return arr;
+    };
     const appliancesList = recipe => formatText(recipe.appliance);
-    const ustensilsList = recipe => recipe.ustensils.map(item => formatText(item)).join(" ");
+    const ustensilsList = recipe => {
+      const arr = [];
+      for (const item of recipe.ustensils) { arr[arr.length] = formatText(item); }
+      return arr;
+    };
 
     return (
-      formatText(recipe.name).includes(formatText(keyword)) ||
-      formatText(recipe.description).includes(formatText(keyword)) ||
-      ingredientsList(recipe).includes(formatText(keyword)) ||
-      appliancesList(recipe).includes(formatText(keyword)) ||
-      ustensilsList(recipe).includes(formatText(keyword))
+      recipeName.includes(formatKeyword) ||
+      recipeDescription.includes(formatKeyword) ||
+      ingredientsList(recipe).join(" ").includes(formatKeyword) ||
+      appliancesList(recipe).includes(formatKeyword) ||
+      ustensilsList(recipe).join(" ").includes(formatKeyword)
     );
   }
 
-  #handleSearchFilter(formatText, keyword, filter) {
-    return formatText(filter).includes(formatText(keyword));
+  #handleSearchFilter(formatText, keyword, filter) { return formatText(filter).includes(formatText(keyword)); }
+
+  #handleSetData(setData, set) {
+    const newSetData = [];
+    for (const keyword of [ ...set ]) { if (setData.has(keyword)) newSetData[newSetData.length] = keyword; }
+
+    return new Set(newSetData);
   }
 
-  handleSearch(type, inputValue = "", data = this.allRecipes) {
-    const { formatText } = this.tools;
+  handle(type, inputValue = "", data = this.recipes) {
+    const { formatText } = StringUtils;
     const inputValueSplit = inputValue.split(" ");
     const keywords = this.#handleKeywords(inputValueSplit);
 
     let setData = new Set(data);
-    (type === "recipes") && (keywords.length > 0) && keywords.map(keyword => {
-      const arr = new Set();
-      data.map(item => this.#handleSearchRecipe(formatText, keyword, item) && arr.add(item));
-      setData = new Set([ ...arr ].filter(keyword => setData.has(keyword)));
-    });
 
-    (type === "filters") && (inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
-      const arr = new Set();
-      data.map(item => this.#handleSearchFilter(formatText, keyword, item) && arr.add(item));
-      setData = new Set([ ...arr ].filter(keyword => setData.has(keyword)));
+    if (type === "recipes" && keywords.length > 0) {
+      for (const keyword of keywords) {
+        const set = new Set();
+        for (const item of data) { this.#handleSearchRecipe(formatText, keyword, item) && set.add(item); }
+        setData = this.#handleSetData(setData, set);
+      }
+    }
+
+    (type === "filters" && inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
+      const set = new Set();
+      for (const item of data) { this.#handleSearchFilter(formatText, keyword, item) && set.add(item); }
+      setData = this.#handleSetData(setData, set);
     });
 
     return [ ...setData ];

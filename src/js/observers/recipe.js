@@ -1,32 +1,22 @@
 export default class RecipeSubject {
   constructor() {
-    this.observers = { set: [], update: [] };
+    this.observers = { keywords: [], cards: [], filters: [], handle: [] };
   }
 
   attach(type, observer) {
-    this.observers[type][this.observers[type].length] = observer; // change method
+    this.observers[type].push(observer);
   }
 
   // detach(observer) {
   //   this.observers = this.observers.filter(obs => obs !== observer);
   // }
 
-  dispatch(type, state) {
+  dispatch(type, state, ...args) {
     if (this.observers[type].length > 0) {
-      if (type === "set") {
-        const arr = [];
-        for (const obs of this.observers[type]) {
-          arr[arr.length] = obs.set(state);
-        }
-        return arr;
-      }
-      if (type === "update") {
-        const arr = [];
-        for (const obs of this.observers[type]) {
-          arr[arr.length] = obs.update(state);
-        }
-        return arr;
-      }
+      if (type === "keywords") return this.observers[type].forEach(obs => obs.set(state));
+      if (type === "cards") return this.observers[type].forEach(obs => obs.display(state));
+      if (type === "filters") return this.observers[type].forEach(obs => obs.display(state, ...args));
+      if (type === "handle") return this.observers[type].forEach(obs => obs.handle(state));
     }
   }
 }
