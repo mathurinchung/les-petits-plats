@@ -10,7 +10,6 @@ export default class RecipeFactory {
 export class FiltersListFactory {
   constructor(recipes) {
     this.recipes = recipes;
-    this.tools = new StringUtils();
 
     return { 
       ingredients: this.#ingredientsList(),
@@ -26,7 +25,7 @@ export class FiltersListFactory {
 
     this.recipes.map(recipe => {
       recipe.ingredients.map(item => {
-        const string = this.tools.setString(item.ingredient);
+        const string = StringUtils.setString(item.ingredient);
         this.#hasItem(arr, string);
       });
     });
@@ -38,7 +37,7 @@ export class FiltersListFactory {
     const arr = new Set();
 
     this.recipes.map(recipe => {
-      const string = this.tools.setString(recipe.appliance);
+      const string = StringUtils.setString(recipe.appliance);
       this.#hasItem(arr, string);
     });
 
@@ -50,7 +49,7 @@ export class FiltersListFactory {
 
     this.recipes.map(recipe => {
       recipe.ustensils.map(item => {
-        const string = this.tools.setString(item);
+        const string = StringUtils.setString(item);
         this.#hasItem(arr, string);
       });
     });

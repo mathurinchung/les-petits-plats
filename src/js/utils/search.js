@@ -4,7 +4,6 @@ export default class SearchUtils {
   constructor(state) {
     this.recipes = state.recipes;
     this.tags = state.keywords;
-    this.tools = new StringUtils();
   }
 
   #handleKeywords(inputValueSplit) {
@@ -29,7 +28,7 @@ export default class SearchUtils {
   #handleSearchFilter(formatText, keyword, filter) { return formatText(filter).includes(formatText(keyword)); }
 
   handle(type, inputValue = "", data = this.recipes) {
-    const { formatText } = this.tools;
+    const { formatText } = StringUtils;
     const inputValueSplit = inputValue.split(" ");
     const keywords = this.#handleKeywords(inputValueSplit);
 
