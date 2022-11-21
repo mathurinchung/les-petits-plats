@@ -37,13 +37,13 @@ export default class SearchUtils {
     const keywords = this.#handleKeywords(inputValueSplit);
 
     let setData = new Set(data);
-    (type === "recipes") && (keywords.length > 0) && keywords.map(keyword => {
+    (type === "recipes" && keywords.length > 0) && keywords.map(keyword => {
       const set = new Set();
       data.map(item => this.#handleSearchRecipe(keyword, item) && set.add(item));
       setData = this.#handleSetData(set, setData);
     });
 
-    (type === "filters") && (inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
+    (type === "filters" && inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
       const set = new Set();
       data.map(item => this.#handleSearchFilter(keyword, item) && set.add(item));
       setData = this.#handleSetData(set, setData);
