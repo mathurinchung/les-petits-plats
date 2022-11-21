@@ -1,18 +1,18 @@
 import DropdownFactory from "../factories/dropdown.js";
-import KeywordsComponent from "./keywords.js";
+import { FiltersListFactory } from "../factories/recipe.js";
 import SearchUtils from "../utils/search.js";
 
 export default class DropdownComponent {
-  displayDropdown(state) {
+  display({ filterType }) {
     const dropdownContainer = document.querySelector("#dropdown");
 
-    let DropdownDOM = "";
-    for (const type of state.filterType) {
+    const dropdownDOM = [];
+    for (const type of filterType) {
       const dropdownTemplate = new DropdownFactory(type);
-      DropdownDOM += dropdownTemplate.DropdownDOM();
+      dropdownDOM[dropdownDOM.length] = dropdownTemplate.DropdownDOM(); // map method
     }
 
-    dropdownContainer.innerHTML = DropdownDOM;
+    dropdownContainer.innerHTML = dropdownDOM.join("");
   }
 
   #handleToggleDropdown(element, filterDropdownElements, dropdownInputElement) {
@@ -24,38 +24,34 @@ export default class DropdownComponent {
 
   #handleCloseDropdown(elements) {
     for (const element of elements) {
-      element.classList.remove("show");
+      element.classList.remove("show"); // forEach method
     }
   }
 
   #handleOnInputDropdown(e, setState, element, dropdownItemElements) {
     const searchUtils = new SearchUtils(setState);
     const inputValue = e.target.value;
+    const itemTextContent = [];
 
-    let itemTextContent = [];
-    for (const item of dropdownItemElements) {
-      itemTextContent[itemTextContent.length] = item.textContent; // push method
-    }
+    for (const item of dropdownItemElements) { itemTextContent[itemTextContent.length] = item.textContent; }  // map method
 
     if (inputValue.length >= 3) {
-      if (element.classList.contains("dropdown-ingredients"))  return { ingredients: searchUtils.handleSearch("filters", inputValue, itemTextContent) };
-      if (element.classList.contains("dropdown-appliances"))  return { appliances: searchUtils.handleSearch("filters", inputValue, itemTextContent) };
-      if (element.classList.contains("dropdown-ustensils"))  return { ustensils: searchUtils.handleSearch("filters", inputValue, itemTextContent) };
+      if (element.classList.contains("dropdown-ingredients")) return { ingredients: searchUtils.handle("filters", inputValue, itemTextContent) };
+      if (element.classList.contains("dropdown-appliances")) return { appliances: searchUtils.handle("filters", inputValue, itemTextContent) };
+      if (element.classList.contains("dropdown-ustensils")) return { ustensils: searchUtils.handle("filters", inputValue, itemTextContent) };
     }
   }
 
-  handleDropdown(state) {
-    const keywordsComponent = new KeywordsComponent();
-    const dropdownElements = [ ...document.querySelectorAll(".dropdown") ];
+  handle(state) {
+    const dropdownElements = document.querySelectorAll(".dropdown");
 
     for (const element of dropdownElements) {
       const filterDropdownElements = [];
-      for (const el of dropdownElements) {
+      for (const el of [ ...dropdownElements ]) {
         if (el !== element) filterDropdownElements[filterDropdownElements.length] = el; // filter method
       }
 
       const dropdownInputElement = element.querySelector(".form-control");
-      const dropdownItemElements = element.querySelectorAll(".dropdown-item");
 
       element.onclick = e => {
         e.preventDefault();
@@ -70,27 +66,14 @@ export default class DropdownComponent {
         e.stopPropagation();
 
         const setState = { ...state };
-        state.subject.dispatch("set", state);
-        state.recipes = { ...state.recipes , ...this.#handleOnInputDropdown(e, setState, element, [ ...dropdownItemElements ]) };
-        state.subject.dispatch("update", state);
+        state.subject.dispatch("keywords", setState);
+
+        const dropdownItemElements = element.querySelectorAll(".dropdown-item");
+        const setFilters = new FiltersListFactory(setState.recipes);
+        state.subject.dispatch("filters", setState, { ...setFilters , ...this.#handleOnInputDropdown(e, setState, element, [ ...dropdownItemElements ]) });
       };
-
-      for (const element of [ ...dropdownItemElements ]) {
-        element.onclick = e => {
-          e.stopPropagation();
-          dropdownInputElement.value = "";
-          keywordsComponent.handleAddKeyword(e, state, element);
-          keywordsComponent.handleRemoveKeywords(state);
-        };
-
-        for (const keyword of [ ...document.querySelectorAll(".keyword-item-text") ]) {
-          (keyword.textContent === element.textContent) && element.classList.add("active");
-        }
-      }
 
       document.body.onclick = () => this.#handleCloseDropdown(dropdownElements);
     }
   }
-
-  update(state) { this.handleDropdown(state); }
 }

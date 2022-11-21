@@ -4,23 +4,22 @@ export default class CardFactory {
   constructor(recipes) {
     this.recipes = recipes;
 
-    let cardsTemplate = [];
+    const recipesTemplate = [];
     for (const recipe of this.recipes) {
-      cardsTemplate[cardsTemplate.length] = new CardTemplate(recipe, this.#CardIngredientList(recipe));
+      recipesTemplate[recipesTemplate.length] = new CardTemplate(recipe, this.#CardIngredientList(recipe));
     }
 
-    return cardsTemplate;
+    return recipesTemplate;
   }
 
   #CardIngredientList(recipe) {
-    let ingredientsList = "";
+    const cardIngredientList = [];
     for (const item of recipe.ingredients) {
       const { ingredient, quantity, unit } = this.#CardIngredientItem(item);
-
-      ingredientsList += `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`;
+      cardIngredientList[cardIngredientList.length] = `<li><span class="fw-bold">${ingredient}${quantity}${unit}</li>`;
     }
 
-    return ingredientsList;
+    return cardIngredientList.join("");
   }
 
   #CardIngredientItem(item) {
