@@ -21,7 +21,7 @@ class App {
     this.state.subject.dispatch("filters", this.state, setFilters);
     this.state.subject.dispatch("handle", this.state);
 
-    console.log("State: ", this.state);
+    // console.log("State: ", this.state);
   }
 }
 

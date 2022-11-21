@@ -1,6 +1,6 @@
 export default class RecipeSubject {
   constructor() {
-    this.observers = { keywords: [], cards: [], filters: [], handle: [] };
+    this.observers = { cards: [], filters: [], handle: [] };
   }
 
   attach(type, observer) {
@@ -13,7 +13,6 @@ export default class RecipeSubject {
 
   dispatch(type, state, ...args) {
     if (this.observers[type].length > 0) {
-      if (type === "keywords") return this.observers[type].forEach(obs => obs.set(state));
       if (type === "cards") return this.observers[type].forEach(obs => obs.display(state));
       if (type === "filters") return this.observers[type].forEach(obs => obs.display(state, ...args));
       if (type === "handle") return this.observers[type].forEach(obs => obs.handle(state));

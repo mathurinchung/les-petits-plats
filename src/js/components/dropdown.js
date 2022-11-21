@@ -52,8 +52,9 @@ export default class DropdownComponent {
         e.preventDefault();
         e.stopPropagation();
 
+        const searchbarElement = document.querySelector("#searchbar");
         const setState = { ...state };
-        state.subject.dispatch("keywords", setState);
+        setState.recipes = new SearchUtils(setState).handle("recipes", searchbarElement.value);
 
         const dropdownItemElements = element.querySelectorAll(".dropdown-item");
         const setFilters = new FiltersListFactory(setState.recipes);
