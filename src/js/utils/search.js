@@ -11,7 +11,8 @@ export default class SearchUtils {
     else return (inputValueSplit.length > 0) ? [ ...inputValueSplit ] : [];
   }
 
-  #handleSearchRecipe(formatText, keyword, recipe) {
+  #handleSearchRecipe(keyword, recipe) {
+    const { formatText } = StringUtils;
     const ingredientsList = recipe => recipe.ingredients.map(item => formatText(item.ingredient)).join(" ");
     const appliancesList = recipe => formatText(recipe.appliance);
     const ustensilsList = recipe => recipe.ustensils.map(item => formatText(item)).join(" ");
@@ -25,24 +26,27 @@ export default class SearchUtils {
     );
   }
 
-  #handleSearchFilter(formatText, keyword, filter) { return formatText(filter).includes(formatText(keyword)); }
+  #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }
+
+  #handleSetData(arr, setData) {
+    return new Set([ ...arr ].filter(keyword => setData.has(keyword)))
+  }
 
   handle(type, inputValue = "", data = this.recipes) {
-    const { formatText } = StringUtils;
     const inputValueSplit = inputValue.split(" ");
     const keywords = this.#handleKeywords(inputValueSplit);
 
     let setData = new Set(data);
     (type === "recipes") && (keywords.length > 0) && keywords.map(keyword => {
       const arr = new Set();
-      data.map(item => this.#handleSearchRecipe(formatText, keyword, item) && arr.add(item));
-      setData = new Set([ ...arr ].filter(keyword => setData.has(keyword)));
+      data.map(item => this.#handleSearchRecipe(keyword, item) && arr.add(item));
+      setData = this.#handleSetData(arr, setData);
     });
 
     (type === "filters") && (inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
       const arr = new Set();
-      data.map(item => this.#handleSearchFilter(formatText, keyword, item) && arr.add(item));
-      setData = new Set([ ...arr ].filter(keyword => setData.has(keyword)));
+      data.map(item => this.#handleSearchFilter(keyword, item) && arr.add(item));
+      setData = this.#handleSetData(arr, setData);
     });
 
     return [ ...setData ];
