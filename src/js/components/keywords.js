@@ -40,11 +40,12 @@ export default class KeywordsComponent {
         element.remove();
 
         if (document.querySelectorAll(".keyword-item").length === 0) document.querySelector("#keywords").classList.remove("show");
-        state.keywords = [];
+        const arr = [];
         for (const keyword of state.keywords) {
-          if (keyword !== element.textContent.trim()) state.keywords[state.keywords.length] = keyword;
+          if (keyword !== element.textContent.trim()) arr[arr.length] = keyword;
         }
 
+        state.keywords = [ ...arr ];
         const setState = { ...state };
         setState.recipes = [ ...state.recipes ];
         state.subject.dispatch("keywords", setState);
