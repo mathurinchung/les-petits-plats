@@ -16,6 +16,7 @@ export default class KeywordsComponent {
   }
 
   handleAddKeyword(e, state, element) {
+    const searchbarElement = document.querySelector("#searchbar");
     document.querySelector("#keywords").classList.add("show");
 
     for (const type of state.filterType) {
@@ -26,13 +27,14 @@ export default class KeywordsComponent {
 
     const setState = { ...state };
     setState.keywords[setState.keywords.length] = element.textContent;
-    state.subject.dispatch("keywords", setState);
+    setState.recipes = new SearchUtils(setState).handle("recipes", searchbarElement.value);
     state.subject.dispatch("cards", setState);
     const setFilters = new FiltersListFactory(setState.recipes);
     state.subject.dispatch("filters", state, setFilters);
   }
 
   handleRemoveKeywords(state) {
+    const searchbarElement = document.querySelector("#searchbar");
     const keywordElements = document.querySelectorAll(".keyword-item");
 
     for (const element of keywordElements) {
@@ -47,8 +49,7 @@ export default class KeywordsComponent {
 
         state.keywords = [ ...arr ];
         const setState = { ...state };
-        setState.recipes = [ ...state.recipes ];
-        state.subject.dispatch("keywords", setState);
+        setState.recipes = new SearchUtils(setState).handle("recipes", searchbarElement.value);
         state.subject.dispatch("cards", setState);
         const setFilters = new FiltersListFactory(setState.recipes);
         state.subject.dispatch("filters", state, setFilters);

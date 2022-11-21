@@ -23,9 +23,7 @@ export default class DropdownComponent {
   }
 
   #handleCloseDropdown(elements) {
-    for (const element of elements) {
-      element.classList.remove("show"); // forEach method
-    }
+    for (const element of elements) { element.classList.remove("show"); } // forEach method
   }
 
   #handleOnInputDropdown(e, setState, element, dropdownItemElements) {
@@ -47,9 +45,7 @@ export default class DropdownComponent {
 
     for (const element of dropdownElements) {
       const filterDropdownElements = [];
-      for (const el of [ ...dropdownElements ]) {
-        if (el !== element) filterDropdownElements[filterDropdownElements.length] = el; // filter method
-      }
+      for (const el of [ ...dropdownElements ]) { if (el !== element) filterDropdownElements[filterDropdownElements.length] = el; } // filter method
 
       const dropdownInputElement = element.querySelector(".form-control");
 
@@ -65,8 +61,9 @@ export default class DropdownComponent {
         e.preventDefault();
         e.stopPropagation();
 
+        const searchbarElement = document.querySelector("#searchbar");
         const setState = { ...state };
-        state.subject.dispatch("keywords", setState);
+        setState.recipes = new SearchUtils(setState).handle("recipes", searchbarElement.value);
 
         const dropdownItemElements = element.querySelectorAll(".dropdown-item");
         const setFilters = new FiltersListFactory(setState.recipes);

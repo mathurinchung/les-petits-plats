@@ -8,9 +8,10 @@ export default class SearchbarComponent {
   }
 
   #handleClearInput(state) {
+    const searchUtils = new SearchUtils(state);
     this.searchForm.reset();
     this.searchInputIcon.className = "icon icon-magnifying-glass";
-    return state.recipes;
+    return searchUtils.handle("recipes");
   }
 
   #handleOnInputSearchbar(e, state) {
@@ -21,12 +22,12 @@ export default class SearchbarComponent {
 
     if (searchbarValue.length >= 1) {
       this.searchInputIcon.className = "icon icon-circle-xmark";
-      return state.recipes;
+      return searchUtils.handle("recipes");
     }
 
     if (searchbarValue.length === 0) {
       this.searchInputIcon.className = "icon icon-magnifying-glass";
-      return state.recipes;
+      return searchUtils.handle("recipes");
     }
   }
 
@@ -42,7 +43,6 @@ export default class SearchbarComponent {
 
     searchbarElement.oninput = e => {
       setState.recipes = this.#handleOnInputSearchbar(e, state);
-      state.subject.dispatch("keywords", setState);
       state.subject.dispatch("cards", setState);
       const setFilters = new FiltersListFactory(setState.recipes);
       state.subject.dispatch("filters", state, setFilters);
@@ -50,7 +50,6 @@ export default class SearchbarComponent {
       if (this.searchInputIcon.classList.contains("icon-circle-xmark")) {
         this.searchInputIcon.onclick = () => {
           setState.recipes = this.#handleClearInput(state);
-          state.subject.dispatch("keywords", setState);
           state.subject.dispatch("cards", setState);
           const setFilters = new FiltersListFactory(setState.recipes);
           state.subject.dispatch("filters", state, setFilters);
