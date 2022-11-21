@@ -28,8 +28,8 @@ export default class SearchUtils {
 
   #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }
 
-  #handleSetData(arr, setData) {
-    return new Set([ ...arr ].filter(keyword => setData.has(keyword)))
+  #handleSetData(set, setData) {
+    return new Set([ ...set ].filter(keyword => setData.has(keyword)));
   }
 
   handle(type, inputValue = "", data = this.recipes) {
@@ -38,15 +38,15 @@ export default class SearchUtils {
 
     let setData = new Set(data);
     (type === "recipes") && (keywords.length > 0) && keywords.map(keyword => {
-      const arr = new Set();
-      data.map(item => this.#handleSearchRecipe(keyword, item) && arr.add(item));
-      setData = this.#handleSetData(arr, setData);
+      const set = new Set();
+      data.map(item => this.#handleSearchRecipe(keyword, item) && set.add(item));
+      setData = this.#handleSetData(set, setData);
     });
 
     (type === "filters") && (inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
-      const arr = new Set();
-      data.map(item => this.#handleSearchFilter(keyword, item) && arr.add(item));
-      setData = this.#handleSetData(arr, setData);
+      const set = new Set();
+      data.map(item => this.#handleSearchFilter(keyword, item) && set.add(item));
+      setData = this.#handleSetData(set, setData);
     });
 
     return [ ...setData ];
