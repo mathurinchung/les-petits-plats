@@ -4,7 +4,6 @@ export default class SearchUtils {
   constructor(state) {
     this.recipes = state.recipes;
     this.tags = state.keywords;
-    // this.tools = new StringUtils();
   }
 
   #handleKeywords(inputValueSplit) {
@@ -61,11 +60,13 @@ export default class SearchUtils {
       }
     }
 
-    (type === "filters" && inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
-      const set = new Set();
-      for (const item of data) { this.#handleSearchFilter(formatText, keyword, item) && set.add(item); }
-      setData = this.#handleSetData(setData, set);
-    });
+    if (type === "filters" && inputValueSplit.length > 0) {
+      for (const keyword of inputValueSplit) {
+        const set = new Set();
+        for (const item of data) { this.#handleSearchFilter(formatText, keyword, item) && set.add(item); }
+        setData = this.#handleSetData(setData, set);
+      }
+    }
 
     return [ ...setData ];
   }
