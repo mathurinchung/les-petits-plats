@@ -46,6 +46,7 @@ export default class SearchbarComponent {
       state.subject.dispatch("cards", setState);
       const setFilters = new FiltersListFactory(setState.recipes);
       state.subject.dispatch("filters", state, setFilters);
+      if (setState.recipes.length === 0) document.querySelector("#recipes").innerHTML = "<p>Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>";
 
       if (this.searchInputIcon.classList.contains("icon-circle-xmark")) {
         this.searchInputIcon.onclick = () => {
