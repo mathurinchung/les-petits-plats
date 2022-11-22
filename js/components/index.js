@@ -4,7 +4,7 @@ import DropdownComponent from "./dropdown.js";
 import SearchbarComponent from "./searchbar.js";
 
 export default class Components {
-  init(state) {
+  static init(state) {
     const cardComponent = new CardComponent();
     const filtersComponent = new FiltersComponent();
     const dropdownComponent = new DropdownComponent();
