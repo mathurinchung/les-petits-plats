@@ -3,12 +3,6 @@ import { FiltersListFactory } from "../factories/recipe.js";
 import SearchUtils from "../utils/search.js";
 
 export default class KeywordsComponent {
-  set(state) {
-    const searchbarElement = document.querySelector("#searchbar");
-    const setRecipes = new SearchUtils(state).handle("recipes", searchbarElement.value);
-    state.recipes = setRecipes;
-  }
-
   #display(type, keyword) {
     const keywordTemplate = new KeywordTemplate();
 

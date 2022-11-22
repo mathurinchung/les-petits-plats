@@ -7,7 +7,7 @@ export default class CardComponent {
     const cardFactory = new CardFactory(state.recipes);
 
     const recipesCardDOM = [];
-    for (const recipe of cardFactory) { recipesCardDOM[recipesCardDOM.length] = recipe.CardDOM(); }// map method
+    for (const recipe of cardFactory) { recipesCardDOM[recipesCardDOM.length] = recipe.CardDOM(); } // map method
 
     recipesContainer.innerHTML = recipesCardDOM.join("");
   }
