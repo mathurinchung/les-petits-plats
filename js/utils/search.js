@@ -11,7 +11,8 @@ export default class SearchUtils {
     else return (inputValueSplit.length > 0) ? [ ...inputValueSplit ] : [];
   }
 
-  #handleSearchRecipe(formatText, keyword, recipe) {
+  #handleSearchRecipe(keyword, recipe) {
+    const { formatText } = StringUtils;
     const formatKeyword = formatText(keyword);
     const recipeName =  formatText(recipe.name);
     const recipeDescription =  formatText(recipe.description);
@@ -36,7 +37,7 @@ export default class SearchUtils {
     );
   }
 
-  #handleSearchFilter(formatText, keyword, filter) { return formatText(filter).includes(formatText(keyword)); }
+  #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }
 
   #handleSetData(setData, set) {
     const newSetData = [];
@@ -46,7 +47,6 @@ export default class SearchUtils {
   }
 
   handle(type, inputValue = "", data = this.recipes) {
-    const { formatText } = StringUtils;
     const inputValueSplit = inputValue.split(" ");
     const keywords = this.#handleKeywords(inputValueSplit);
 
@@ -55,7 +55,7 @@ export default class SearchUtils {
     if (type === "recipes" && keywords.length > 0) {
       for (const keyword of keywords) {
         const set = new Set();
-        for (const item of data) { this.#handleSearchRecipe(formatText, keyword, item) && set.add(item); }
+        for (const item of data) { this.#handleSearchRecipe(keyword, item) && set.add(item); }
         setData = this.#handleSetData(setData, set);
       }
     }
@@ -63,7 +63,7 @@ export default class SearchUtils {
     if (type === "filters" && inputValueSplit.length > 0) {
       for (const keyword of inputValueSplit) {
         const set = new Set();
-        for (const item of data) { this.#handleSearchFilter(formatText, keyword, item) && set.add(item); }
+        for (const item of data) { this.#handleSearchFilter(keyword, item) && set.add(item); }
         setData = this.#handleSetData(setData, set);
       }
     }
