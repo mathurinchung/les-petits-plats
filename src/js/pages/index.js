@@ -13,13 +13,12 @@ class App {
     this.state.recipes = new RecipeFactory(data); // init Recipes (State)
     this.state.subject = new RecipeSubject(); // init Subject (State)
 
-    const components = new Components();
-    components.init(this.state); // init Components
+    Components.init(this.state); // init Components
 
-    this.state.subject.dispatch("cards", this.state);
-    const setFilters = new FiltersListFactory(this.state.recipes);
-    this.state.subject.dispatch("filters", this.state, setFilters);
-    this.state.subject.dispatch("handle", this.state);
+    this.state.subject.dispatch("cards", this.state); // display Cards (Observer)
+    const setFilters = new FiltersListFactory(this.state.recipes); // set Filters (Observer)
+    this.state.subject.dispatch("filters", this.state, setFilters); // display Filters (Observer)
+    this.state.subject.dispatch("handle", this.state); // handle Dropdown & Searchbar (Observer)
 
     // console.log("State: ", this.state);
   }
