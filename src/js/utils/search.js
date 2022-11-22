@@ -13,17 +13,14 @@ export default class SearchUtils {
 
   #handleSearchRecipe(keyword, recipe) {
     const { formatText } = StringUtils;
+    const formatKeyword = formatText(keyword);
+    const recipeName = formatText(recipe.name);
+    const recipeDescription = formatText(recipe.description);
     const ingredientsList = recipe => recipe.ingredients.map(item => formatText(item.ingredient)).join(" ");
     const appliancesList = recipe => formatText(recipe.appliance);
     const ustensilsList = recipe => recipe.ustensils.map(item => formatText(item)).join(" ");
 
-    return (
-      formatText(recipe.name).includes(formatText(keyword)) ||
-      formatText(recipe.description).includes(formatText(keyword)) ||
-      ingredientsList(recipe).includes(formatText(keyword)) ||
-      appliancesList(recipe).includes(formatText(keyword)) ||
-      ustensilsList(recipe).includes(formatText(keyword))
-    );
+    return (recipeName.includes(formatKeyword) || recipeDescription.includes(formatKeyword) || ingredientsList(recipe).includes(formatKeyword) || appliancesList(recipe).includes(formatKeyword) || ustensilsList(recipe).includes(formatKeyword));
   }
 
   #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }

@@ -9,7 +9,7 @@ class App {
   }
 
   init() {
-    const data = RecipeService.getAllRecipes(); // init Data (State)
+    const data = RecipeService.getAllRecipes(); // get Data
     this.state.recipes = new RecipeFactory(data); // init Recipes (State)
     this.state.subject = new RecipeSubject(); // init Subject (State)
 

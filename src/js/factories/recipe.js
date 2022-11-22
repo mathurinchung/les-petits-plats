@@ -11,11 +11,7 @@ export class FiltersListFactory {
   constructor(recipes) {
     this.recipes = recipes;
 
-    return { 
-      ingredients: this.#ingredientsList(),
-      appliances: this.#appliancesList(),
-      ustensils: this.#ustensilsList()
-    };
+    return { ingredients: this.#ingredientsList(), appliances: this.#appliancesList(), ustensils: this.#ustensilsList() };
   }
 
   #hasItem(arr, string) { if (!arr.has(string.slice(0, -1))) return arr.add(string.trim()); }
