@@ -16,7 +16,7 @@ class App {
     Components.init(this.state); // init Components
 
     this.state.subject.dispatch("cards", this.state); // display Cards (Observer)
-    const setFilters = new FiltersListFactory(this.state.recipes); // set Filters (Observer)
+    const setFilters = new FiltersListFactory(this.state.recipes); // set Filters
     this.state.subject.dispatch("filters", this.state, setFilters); // display Filters (Observer)
     this.state.subject.dispatch("handle", this.state); // handle Dropdown & Searchbar (Observer)
 
