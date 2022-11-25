@@ -17,10 +17,8 @@ export default class SearchUtils {
     const recipeName = formatText(recipe.name);
     const recipeDescription = formatText(recipe.description);
     const ingredientsList = recipe => recipe.ingredients.map(item => formatText(item.ingredient)).join(" ");
-    const appliancesList = recipe => formatText(recipe.appliance);
-    const ustensilsList = recipe => recipe.ustensils.map(item => formatText(item)).join(" ");
 
-    return (recipeName.includes(formatKeyword) || recipeDescription.includes(formatKeyword) || ingredientsList(recipe).includes(formatKeyword) || appliancesList(recipe).includes(formatKeyword) || ustensilsList(recipe).includes(formatKeyword));
+    return (recipeName.includes(formatKeyword) || recipeDescription.includes(formatKeyword) || ingredientsList(recipe).includes(formatKeyword));
   }
 
   #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }
