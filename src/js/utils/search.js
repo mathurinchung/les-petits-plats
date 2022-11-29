@@ -34,7 +34,9 @@ export default class SearchUtils {
   #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }
 
   #handleSetData(set, setData) {
-    return new Set([ ...set ].filter(keyword => setData.has(keyword)));
+    const newSetData = [];
+    for (const keyword of [ ...set ]) { if (setData.has(keyword)) newSetData[newSetData.length] = keyword; }
+    return new Set(newSetData);
   }
 
   handle(type, inputValue = "", data = this.recipes) {
