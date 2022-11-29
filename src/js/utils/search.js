@@ -17,15 +17,19 @@ export default class SearchUtils {
     const recipeName = formatText(recipe.name);
     const recipeDescription = formatText(recipe.description);
     const ingredientsList = recipe => {
+      const arr = [];
       for (const item of recipe.ingredients) {
-        formatText(item.ingredient).join(" ");
+        arr[arr.length] = formatText(item.ingredient);
       }
+      return arr.join(" ");
     };
     const appliancesList = recipe => formatText(recipe.appliance);
     const ustensilsList = recipe => {
+      const arr = [];
       for (const item of recipe.ustensils) {
-        formatText(item).join(" ");
+        arr[arr.length] = formatText(item);
       }
+      return arr.join(" ");
     };
 
     return (recipeName.includes(formatKeyword) || recipeDescription.includes(formatKeyword) || ingredientsList(recipe).includes(formatKeyword) || appliancesList(recipe).includes(formatKeyword) || ustensilsList(recipe).includes(formatKeyword));
