@@ -16,9 +16,17 @@ export default class SearchUtils {
     const formatKeyword = formatText(keyword);
     const recipeName = formatText(recipe.name);
     const recipeDescription = formatText(recipe.description);
-    const ingredientsList = recipe => recipe.ingredients.map(item => formatText(item.ingredient)).join(" ");
+    const ingredientsList = recipe => {
+      for (const item of recipe.ingredients) {
+        formatText(item.ingredient).join(" ");
+      }
+    };
     const appliancesList = recipe => formatText(recipe.appliance);
-    const ustensilsList = recipe => recipe.ustensils.map(item => formatText(item)).join(" ");
+    const ustensilsList = recipe => {
+      for (const item of recipe.ustensils) {
+        formatText(item).join(" ");
+      }
+    };
 
     return (recipeName.includes(formatKeyword) || recipeDescription.includes(formatKeyword) || ingredientsList(recipe).includes(formatKeyword) || appliancesList(recipe).includes(formatKeyword) || ustensilsList(recipe).includes(formatKeyword));
   }
@@ -34,17 +42,27 @@ export default class SearchUtils {
     const keywords = this.#handleKeywords(inputValueSplit);
 
     let setData = new Set(data);
-    (type === "recipes" && keywords.length > 0) && keywords.map(keyword => {
-      const set = new Set();
-      data.map(item => this.#handleSearchRecipe(keyword, item) && set.add(item));
-      setData = this.#handleSetData(set, setData);
-    });
+    if (type === "recipes" && keywords.length > 0) {
+      for (const keyword of keywords) {
+        const set = new Set();
+        for (const item of data) {
+          this.#handleSearchRecipe(keyword, item) && set.add(item);
+        }
 
-    (type === "filters" && inputValueSplit.length > 0) && inputValueSplit.map(keyword => {
-      const set = new Set();
-      data.map(item => this.#handleSearchFilter(keyword, item) && set.add(item));
-      setData = this.#handleSetData(set, setData);
-    });
+        setData = this.#handleSetData(set, setData);
+      }
+    }
+
+    if (type === "filters" && inputValueSplit.length > 0) {
+      for (const keyword of inputValueSplit) {
+        const set = new Set();
+        for (const item of data) {
+          this.#handleSearchFilter(keyword, item) && set.add(item);
+        }
+
+        setData = this.#handleSetData(set, setData);
+      }
+    }
 
     return [ ...setData ];
   }
