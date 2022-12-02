@@ -37,9 +37,9 @@ export default class SearchUtils {
 
   #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }
 
-  #handleSetData(set, setData) {
+  #handleSetData(setArr, setData) {
     const newSetData = [];
-    for (const keyword of [ ...set ]) { if (setData.has(keyword)) newSetData[newSetData.length] = keyword; }
+    for (const keyword of [ ...setArr ]) { if (setData.has(keyword)) newSetData[newSetData.length] = keyword; }
     return new Set(newSetData);
   }
 
@@ -48,25 +48,15 @@ export default class SearchUtils {
     const keywords = this.#handleKeywords(inputValueSplit);
 
     let setData = new Set(data);
-    if (type === "recipes" && keywords.length > 0) {
+    if (keywords.length > 0) {
       for (const keyword of keywords) {
-        const set = new Set();
+        const setArr = new Set();
         for (const item of data) {
-          this.#handleSearchRecipe(keyword, item) && set.add(item);
+          (type === "recipes" && this.#handleSearchRecipe(keyword, item)) && setArr.add(item);
+          (type === "filters" && this.#handleSearchFilter(keyword, item)) && setArr.add(item);
         }
 
-        setData = this.#handleSetData(set, setData);
-      }
-    }
-
-    if (type === "filters" && inputValueSplit.length > 0) {
-      for (const keyword of inputValueSplit) {
-        const set = new Set();
-        for (const item of data) {
-          this.#handleSearchFilter(keyword, item) && set.add(item);
-        }
-
-        setData = this.#handleSetData(set, setData);
+        setData = this.#handleSetData(setArr, setData);
       }
     }
 
