@@ -23,9 +23,7 @@ export default class SearchUtils {
 
   #handleSearchFilter(keyword, filter) { return StringUtils.formatText(filter).includes(StringUtils.formatText(keyword)); }
 
-  #handleSetData(set, setData) {
-    return new Set([ ...set ].filter(keyword => setData.has(keyword)));
-  }
+  #handleSetData(setArr, setData) { return new Set([ ...setArr ].filter(keyword => setData.has(keyword))); }
 
   handle(type, inputValue = "", data = this.recipes) {
     const inputValueSplit = inputValue.split(" ");
@@ -34,10 +32,12 @@ export default class SearchUtils {
     let setData = new Set(data);
     (keywords.length > 0) && keywords.map(keyword => {
       const setArr = new Set();
+
       data.map(item => {
         (type === "recipes" && this.#handleSearchRecipe(keyword, item)) && setArr.add(item);
         (type === "filters" && this.#handleSearchFilter(keyword, item)) && setArr.add(item);
       });
+
       setData = this.#handleSetData(setArr, setData);
     });
 
