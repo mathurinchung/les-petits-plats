@@ -1,0 +1,67 @@
+#recipes {
+  display: grid;
+  grid-template-columns: repeat(3, get-vw($desktop, 380px));
+  justify-content: space-between;
+  row-gap: get-vw($desktop, 50px);
+}
+
+.recipe-card {
+  border-radius: get-vw($desktop, 5px);
+  width: get-vw($desktop, 380px);
+  height: get-vw($desktop, 364px);
+  background-color: #E7E7E7;
+}
+
+.card-image {
+  border-top-left-radius: get-vw($desktop, 5px);
+  border-top-right-radius: get-vw($desktop, 5px);
+  width: get-vw($desktop, 380px);
+  height: get-vw($desktop, 178px);
+  background-color: #C7BEBE;
+}
+
+.recipe-card figcaption {
+  display: grid;
+  grid-template-columns: repeat(2, get-vw($desktop, 171px));
+  grid-template-rows: get-vw($desktop, 22px) get-vw($desktop, 109px);
+  row-gap: get-vw($desktop, 20px);
+  padding: get-vw($desktop, 20px);
+}
+
+.card-name {
+  overflow: hidden;
+  width: get-vw($desktop, 240px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-time {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: get-vw($desktop, 7px);
+  font-weight: 700;
+}
+
+.card-ingredients li {
+  font-size: get-vw($desktop, 12px);
+  line-height: get-vw($desktop, 14.4px);
+}
+
+.card-ingredients .ingredient {
+  font-size: get-vw($desktop, 12px);
+  font-weight: 700;
+  line-height: get-vw($desktop, 14.4px);
+}
+
+.card-description {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 6;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  max-height: get-vw($desktop, 72px);
+  font-family: 'Roboto', sans-serif;
+  font-size: get-vw($desktop, 12px);
+  line-height: 100%;
+}

@@ -1,0 +1,47 @@
+#filters {
+  display: flex;
+  column-gap: get-vw($desktop, 20px);
+  padding-top: get-vw($desktop, 17px);
+  padding-bottom: get-vw($desktop, 82px);
+}
+
+.filter {
+  border-radius: get-vw($desktop, 5px);
+  width: get-vw($desktop, 170px);
+  height: get-vw($desktop, 60px);
+  color: #FFF;
+}
+
+.filter-ingredients {
+  background-color: #3282F7;
+}
+
+.filter-appliances {
+  background-color: #68D9A4;
+}
+
+.filter-ustensils {
+  background-color: #ED6454;
+}
+
+.filter form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: get-vw($desktop, 24px) get-vw($desktop, 22px);
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.filter label {
+  font-weight: 700;
+}
+
+.filter input {
+  display: none;
+}
+
+.filter-list {
+  display: none;
+}

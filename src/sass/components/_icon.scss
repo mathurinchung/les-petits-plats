@@ -1,0 +1,48 @@
+i {
+  display: inline-block;
+}
+
+.icon-logo {
+  width: get-vw($desktop, 268px);
+  height: get-vw($desktop, 93px);
+  mask:url("../assets/svg/logo.svg") no-repeat;
+  mask-size: get-vw($desktop, 268px) get-vw($desktop, 93px);
+  -webkit-mask:url("../assets/svg/logo.svg") no-repeat;
+  -webkit-mask-size: get-vw($desktop, 268px) get-vw($desktop, 93px);
+  background-color: $base-color;
+}
+
+.icon-magnifying-glass {
+  width: get-vw($desktop, 32.06px);
+  height: get-vw($desktop, 32.06px);
+  mask:url("../assets/svg/magnifying-glass.svg") no-repeat;
+  mask-size: get-vw($desktop, 32.06px) get-vw($desktop, 32.06px);
+  -webkit-mask:url("../assets/svg/magnifying-glass.svg") no-repeat;
+  -webkit-mask-size: get-vw($desktop, 32.06px) get-vw($desktop, 32.06px);
+  background-color: #000;
+}
+
+.icon-circle-xmark {
+  mask:url("../assets/svg/circle-xmark.svg") no-repeat;
+  -webkit-mask:url("../assets/svg/circle-xmark.svg") no-repeat;
+}
+
+.icon-chevron-down {
+  width: get-vw($desktop, 16px);
+  height: get-vw($desktop, 9.88px);
+  mask:url("../assets/svg/chevron-down.svg") no-repeat;
+  mask-size: get-vw($desktop, 16px) get-vw($desktop, 9.88px);
+  -webkit-mask:url("../assets/svg/chevron-down.svg") no-repeat;
+  -webkit-mask-size: get-vw($desktop, 16px) get-vw($desktop, 9.88px);
+  background-color: #FFF;
+}
+
+.icon-clock {
+  width: get-vw($desktop, 20px);
+  height: get-vw($desktop, 20px);
+  mask:url("../assets/svg/magnifying-glass.svg") no-repeat;
+  mask-size: get-vw($desktop, 20px) get-vw($desktop, 20px);
+  -webkit-mask:url("../assets/svg/clock.svg") no-repeat;
+  -webkit-mask-size: get-vw($desktop, 20px) get-vw($desktop, 20px);
+  background-color: #000;
+}
