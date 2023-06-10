@@ -1,0 +1,46 @@
+#keywords {
+  display: none;
+  // column-gap: get-vw($desktop, 13px);
+  padding-top: get-vw($desktop, 25px);
+}
+
+#keywords .keyword-list {
+  display: flex;
+  column-gap: get-vw($desktop, 14px);
+}
+
+#keywords .keyword-list {
+  margin-right: get-vw($desktop, 14px);
+}
+
+#keywords .keyword-item {
+  display: inline-flex;
+  column-gap: get-vw($desktop, 13px);
+  border-radius: get-vw($desktop, 5px);
+  padding: get-vw($desktop, 10px) get-vw($desktop, 21px);
+  color: #fff;
+  font-size: get-vw($desktop, 14px);
+  font-weight: 700;
+  line-height: get-vw($desktop, 16.8px);
+}
+
+#keywords .keyword-item-ingredients {
+  background-color: #3282f7;
+}
+
+#keywords .keyword-item-appliances {
+  background-color: #68d9a4;
+}
+
+#keywords .keyword-item-ustensils {
+  background-color: #ed6454;
+}
+
+#keywords.show {
+  display: flex;
+}
+
+#keywords.show+#filters {
+  padding-top: get-vw($desktop, 15px);
+  padding-bottom: get-vw($desktop, 25px);
+}

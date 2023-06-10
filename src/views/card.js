@@ -1,10 +1,10 @@
 export default class CardView {
-  constructor(data) {
-    this.data = data;
+  constructor(recipe) {
+    this.recipe = recipe;
   }
 
   #CardIngredientList() {
-    return this.data.ingredients.map(item => {
+    return this.recipe.ingredients.map(item => {
       const { ingredient, quantity, unit } = this.#CardIngredientItem(item);
 
       return `<li><span class="ingredient">${ingredient}${quantity}${unit}</li>`;
@@ -57,16 +57,16 @@ export default class CardView {
     return { ingredient, quantity, unit };
   }
 
-  RecipeCardDOM() {
+  displayRecipeCard() {
     return (`
-      <li class="recipe-card" data-name="${ this.data.name }" ${ this.data.description }>
+      <li class="recipe-card" data-name="${ this.recipe.name }">
         <figure>
           <div class="card-image"></div>
           <figcaption>
-            <span class="card-name">${ this.data.name }</span>
-            <span class="card-time"><i class="icon-clock"></i>${ this.data.time } min</span>
+            <span class="card-name">${ this.recipe.name }</span>
+            <span class="card-time"><i class="icon-clock"></i>${ this.recipe.time } min</span>
             <ul class="card-ingredients">${ this.#CardIngredientList() }</ul>
-            <p class="card-description">${ this.data.description }</p>
+            <p class="card-description">${ this.recipe.description }</p>
           </figcaption>
         </figure>
       </li>

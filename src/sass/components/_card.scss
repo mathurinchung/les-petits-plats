@@ -12,6 +12,10 @@
   background-color: #E7E7E7;
 }
 
+.recipe-card.none {
+  display: none;
+}
+
 .card-image {
   border-top-left-radius: get-vw($desktop, 5px);
   border-top-right-radius: get-vw($desktop, 5px);

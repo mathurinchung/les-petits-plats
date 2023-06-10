@@ -1,13 +1,13 @@
 export default class RecipeModel {
-  constructor(data) {
-    this._id = data.id;
-    this._name = data.name;
-    this._description = data.description;
-    this._ingredients = data.ingredients;
-    this._appliance = data.appliance;
-    this._ustensils = data.ustensils;
-    this._time = data.time;
-    this._servings = data.servings;
+  constructor(recipe) {
+    this._id = recipe.id;
+    this._name = recipe.name;
+    this._description = recipe.description;
+    this._ingredients = recipe.ingredients;
+    this._appliance = recipe.appliance;
+    this._ustensils = recipe.ustensils;
+    this._time = recipe.time;
+    this._servings = recipe.servings;
   }
 
   get id() { return this._id; }

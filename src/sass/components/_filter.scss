@@ -1,15 +1,18 @@
 #filters {
   display: flex;
   column-gap: get-vw($desktop, 20px);
-  padding-top: get-vw($desktop, 17px);
+  padding-top: get-vw($desktop, 20px);
   padding-bottom: get-vw($desktop, 82px);
 }
 
 .filter {
+  position: relative;
   border-radius: get-vw($desktop, 5px);
   width: get-vw($desktop, 170px);
-  height: get-vw($desktop, 60px);
+  height: get-vw($desktop, 69px);
   color: #FFF;
+  cursor: pointer;
+  transition: width .3s ease-out
 }
 
 .filter-ingredients {
@@ -25,23 +28,91 @@
 }
 
 .filter form {
+  position: relative;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: get-vw($desktop, 24px) get-vw($desktop, 22px);
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+  cursor: pointer
 }
 
 .filter label {
   font-weight: 700;
 }
 
+.filter .icon-chevron-down {
+  transform: rotate(0deg);
+  transition: transform .3s linear
+}
+
 .filter input {
+  display: none;
+  border: none;
+  padding: 0;
+  width: 95%;
+  background-color: inherit;
+  color: inherit;
+  font-size: get-vw($desktop, 18px);
+  font-weight: 700;
+  line-height: get-vw($desktop, 21.6px);
+}
+
+.filter input::placeholder {
+  color: #fff;
+  opacity: .25
+}
+
+.filter .filter-list {
+  position: absolute;
+  top: get-vw($desktop, 55px);
+  z-index: 100;
+  overflow-y: auto;
+  display: none;
+  flex-wrap: wrap;
+  border-color: transparent;
+  border-style: solid;
+  border-width: get-vw($desktop, 11px) get-vw($desktop, 14px);
+  border-radius: 0 0 get-vw($desktop, 5px) get-vw($desktop, 5px);
+  width: 100%;
+  max-height: get-vw($desktop, 342px);
+  background-color: inherit
+}
+
+.filter .filter-item {
+  overflow: hidden;
+  padding: get-vw($desktop, 5px);
+  width: get-vw($desktop, 213px);
+  font-size: get-vw($desktop, 18px);
+  line-height: get-vw($desktop, 21.6px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer
+}
+
+.filter.show {
+  border-radius: get-vw($desktop, 5px) get-vw($desktop, 5px) 0 0;
+  width: get-vw($desktop, 667px);
+  height: auto;
+}
+
+.filter.show input {
+  display: block;
+}
+
+.filter.show label, .filter-item.none, .filter-item.not  {
   display: none;
 }
 
-.filter-list {
-  display: none;
+.filter.show .filter-list {
+  display: flex;
+}
+
+.filter-item.active {
+  pointer-events: none;
+  opacity: .25;
+}
+
+.filter.show .icon-chevron-down {
+  transform: rotate(180deg)
 }

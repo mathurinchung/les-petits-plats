@@ -1,11 +1,11 @@
-import Api from '../api/index.js';
+import recipes from '../data/recipes.js';
 
 export default class RecipeServices {
   constructor() {
-    this.api = new Api();
+    this.mock = recipes;
   }
 
-  getRecipes() {
-    return this.api.get();
+  async getRecipes() {
+    return await Promise.resolve(this.mock);
   }
 }

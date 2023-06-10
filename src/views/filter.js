@@ -2,7 +2,7 @@ export default class FilterView {
   constructor(type, filters) {
     this.type = type;
 
-    switch (type) {
+    switch (this.type) {
       case 'ingredients':
         this.label = 'Ingredients';
         this.placeholder = 'ingrédients';
@@ -23,11 +23,11 @@ export default class FilterView {
   }
 
   #FilterListDOM() {
-    return this.list.map(item => `<li class="dropdown-item">${item.split(" (", 1)}</li>`).join("");
+    return this.list.map(item => `<li class="filter-item">${ item.split(' (', 1) }</li>`).join('');
   }
 
-  FilterDOM() {
-    return `
+  displayFilter() {
+    return (`
       <div class="filter filter-${ this.type }">
         <form>
           <label for="input-${ this.type }">${ this.label }</label>
@@ -37,6 +37,6 @@ export default class FilterView {
 
         <ul class="filter-list filter-list-${ this.type }">${ this.#FilterListDOM() }</ul>
       </div>
-    `;
+    `);
   }
 }

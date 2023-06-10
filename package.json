@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "les-petits-plats",
   "version": "1.0.0",
   "description": "[ Les petits plats ] Develop a search tool in JavaScript",
   "main": "src/js/pages/index.js",

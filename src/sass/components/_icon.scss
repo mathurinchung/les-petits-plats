@@ -23,8 +23,13 @@ i {
 }
 
 .icon-circle-xmark {
+  width: get-vw($desktop, 20px);
+  height: get-vw($desktop, 20px);
   mask:url("../assets/svg/circle-xmark.svg") no-repeat;
+  mask-size: get-vw($desktop, 20px) get-vw($desktop, 20px);
   -webkit-mask:url("../assets/svg/circle-xmark.svg") no-repeat;
+  -webkit-mask-size: get-vw($desktop, 20px) get-vw($desktop, 20px);
+  background-color: #FFF;
 }
 
 .icon-chevron-down {
