@@ -17,7 +17,7 @@ export default class FiltersObserver {
 
     filterElements.forEach(element => {
       const notFilterElements = [ ...filterElements ].filter(el => el !== element);
-      element.addEventListener('click', (event) => this.filterContainer.handleOpenFilter(element, notFilterElements)(event));
+      element.addEventListener('click', (event) => this.filterContainer.handleToggleFilter(element, notFilterElements)(event));
 
       const filterInputElement = element.querySelector('input');
       const filterItemElements = element.querySelectorAll('.filter-item');

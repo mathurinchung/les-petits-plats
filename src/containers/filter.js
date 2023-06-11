@@ -1,26 +1,33 @@
 import { formatText } from '../utils/string.js';
 
 export default class FilterContainer {
-  handleOpenFilter(element, notElements) {
+  #closeFilter(element) {
+    element.classList.remove('show');
+    element.querySelector('input').value = '';
+  }
+
+  handleToggleFilter(element, notElements) {
     return (event) => {
       event.preventDefault();
       event.stopPropagation();
 
+      const filterInputElement = element.querySelector('input');
+
       this.handleCloseFilter(notElements);
 
-      if (!element.classList.contains('show')) {
-        element.classList.add('show');
-        element.querySelector('input').focus();
+      element.classList.toggle('show');
+
+      if (element.classList.contains('show')) {
+        filterInputElement.focus();
+      } else {
+        this.#closeFilter(element);
       }
     };
   }
 
   handleCloseFilter(notElements) {
-    notElements.forEach(el => {
-      if (el.classList.contains('show')) {
-        el.classList.remove('show');
-        el.querySelector('input').value = '';
-      }
+    notElements.forEach(element => {
+      if (element.classList.contains('show')) this.#closeFilter(element);
     });
   }
 

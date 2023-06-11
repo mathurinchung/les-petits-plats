@@ -1,10 +1,14 @@
 {
   "name": "les-petits-plats",
+  "private": true,
   "version": "1.0.0",
   "description": "[ Les petits plats ] Develop a search tool in JavaScript",
-  "main": "src/js/pages/index.js",
+  "main": "src/main.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -13,6 +17,8 @@
   "author": "Mathurin Chung",
   "license": "ISC",
   "devDependencies": {
+    "vite": "^4.3.9",
+    "sass": "^1.63.3",
     "eslint": "^8.27.0"
   }
 }

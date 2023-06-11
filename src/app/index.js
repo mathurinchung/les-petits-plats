@@ -8,7 +8,7 @@ import RecipesSubject from '../subjects/recipes.js';
 import RecipesObserver from '../observers/recipes.js';
 import FiltersObserver from '../observers/filters.js';
 
-class App {
+export default class App {
   #renderRecipeCards(recipes) {
     const recipesListElement = document.querySelector('#recipes');
     recipesListElement.innerHTML = recipes.map(item => new CardView(item).displayRecipeCard()).join('');
@@ -45,6 +45,3 @@ class App {
     // observers.map(observer => subject.detach(observer));
   }
 }
-
-const app = new App();
-app.init();
