@@ -4,25 +4,21 @@ import CardView from '../views/card.js';
 import FilterView from '../views/filter.js';
 import KeywordView from '../views/keyword.js';
 import Subject from '../subjects/subject.js';
-import RenderSubject from '../subjects/render.js';
-import SearchbarObserver from '../observers/searchbar.js';
+import RecipesSubject from '../subjects/recipes.js';
+import RecipesObserver from '../observers/recipes.js';
 import FiltersObserver from '../observers/filters.js';
-import KeywordObserver from '../observers/keyword.js';
 
 class App {
-  constructor() {
-    this.recipesListElement = document.querySelector('#recipes');
-    this.filtersContainerElement = document.querySelector('#filters');
-  }
-
   #renderRecipeCards(recipes) {
-    this.recipesListElement.innerHTML = recipes.map(item => new CardView(item).displayRecipeCard()).join('');
-    this.recipesListElement.innerHTML += '<p class="empty">Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>'
+    const recipesListElement = document.querySelector('#recipes');
+    recipesListElement.innerHTML = recipes.map(item => new CardView(item).displayRecipeCard()).join('');
+    recipesListElement.innerHTML += '<p class="empty">Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>'
   }
 
   #renderFilters(filters) {
+    const filtersContainerElement = document.querySelector('#filters');
     const filterTypes = [ 'ingredients', 'appliances', 'ustensils' ];
-    this.filtersContainerElement.innerHTML = filterTypes.map(type => new FilterView(type, filters).displayFilter()).join('');
+    filtersContainerElement.innerHTML = filterTypes.map(type => new FilterView(type, filters).displayFilter()).join('');
   }
 
   #renderKeyword(type, keyword) {
@@ -38,16 +34,15 @@ class App {
     this.#renderFilters(filters);
 
     const subject = new Subject();
-    const renderSubject = new RenderSubject(recipes);
+    const recipesSubject = new RecipesSubject(recipes);
 
-    const searchbarObserver = new SearchbarObserver(renderSubject);
+    const recipesObserver = new RecipesObserver(recipesSubject, this.#renderKeyword)
     const filtersObserver = new FiltersObserver();
-    const keywordObserver = new KeywordObserver(renderSubject, this.#renderKeyword);
-    
-    const observers = [ searchbarObserver, filtersObserver, keywordObserver ];
+
+    const observers = [ recipesObserver, filtersObserver ];
     observers.map(observer => subject.attach(observer));
     subject.dispatch();
-    observers.map(observer => subject.detach(observer));
+    // observers.map(observer => subject.detach(observer));
   }
 }
 

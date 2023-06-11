@@ -3,29 +3,26 @@ import FilterContainer from '../containers/filter.js';
 export default class FiltersObserver {
   constructor() {
     this.filterContainer = new FilterContainer();
-    this.filterElements = document.querySelectorAll('.filter');
   }
 
   init() {
+    const filterElements = document.querySelectorAll('.filter');
+
     document.body.addEventListener('click', () => {
-      this.filterElements.forEach(element => {
-        const notElements = [ ...this.filterElements ].filter(el => el !== element);
-        this.filterContainer.handleCloseFilter(notElements);
+      filterElements.forEach(element => {
+        const notFilterElements = [ ...this.filterElements ].filter(el => el !== element);
+        this.filterContainer.handleCloseFilter(notFilterElements);
       });
     });
 
-    this.filterElements.forEach(element => {
-      const notElements = [ ...this.filterElements ].filter(el => el !== element);
+    filterElements.forEach(element => {
+      const notFilterElements = [ ...filterElements ].filter(el => el !== element);
+      element.addEventListener('click', (event) => this.filterContainer.handleOpenFilter(element, notFilterElements)(event));
+
       const filterInputElement = element.querySelector('input');
       const filterItemElements = element.querySelectorAll('.filter-item');
-
-      const handleOpenFilter = this.filterContainer.handleOpenFilter(element, notElements);
-      element.addEventListener('click', handleOpenFilter);
-
       filterInputElement.addEventListener('click', (event) => event.stopPropagation());
-
-      const handleInput = this.filterContainer.handleInput(filterItemElements);
-      filterInputElement.addEventListener('input', handleInput);
+      filterInputElement.addEventListener('input', (event) => this.filterContainer.handleInput(filterItemElements)(event));
     });
   }
 }

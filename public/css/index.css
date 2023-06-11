@@ -313,7 +313,7 @@ i {
   display: block;
 }
 
-.filter.show label, .filter-item.none, .filter-item.not {
+.filter.show label, .filter-item.none, .filter-item.notFilter {
   display: none;
 }
 

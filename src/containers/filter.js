@@ -32,7 +32,7 @@ export default class FilterContainer {
         filterItemElements.forEach(element => {
           if (!element.classList.contains('none')) {
             const isMatchTerm = formatText(element.textContent).includes(searchTerm);
-            element.classList.toggle('not', !isMatchTerm);
+            element.classList.toggle('notFilter', !isMatchTerm);
           }
         });
       }
