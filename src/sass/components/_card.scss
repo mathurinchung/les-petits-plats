@@ -3,6 +3,7 @@
   grid-template-columns: repeat(3, get-vw($desktop, 380px));
   justify-content: space-between;
   row-gap: get-vw($desktop, 50px);
+  margin-bottom: get-vw($desktop, 50px);
 }
 
 .recipe-card {
@@ -68,4 +69,13 @@
   font-family: 'Roboto', sans-serif;
   font-size: get-vw($desktop, 12px);
   line-height: 100%;
+}
+
+#recipes .empty {
+  display: none;
+  grid-column: 1 / 4;
+}
+
+#recipes .empty.show {
+  display: block;
 }

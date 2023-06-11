@@ -68,6 +68,8 @@
   top: get-vw($desktop, 55px);
   z-index: 100;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.25) rgba(0,0,0,0);
   display: none;
   flex-wrap: wrap;
   border-color: transparent;
@@ -79,10 +81,19 @@
   background-color: inherit
 }
 
+.filter .filter-list::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0,0,0,0);
+}
+
+.filter .filter-list::-webkit-scrollbar-thumb  {
+  background-color: rgba(255,255,255,.25);
+}
+
 .filter .filter-item {
   overflow: hidden;
   padding: get-vw($desktop, 5px);
-  width: get-vw($desktop, 213px);
+  width: calc(100% / 3);
   font-size: get-vw($desktop, 18px);
   line-height: get-vw($desktop, 21.6px);
   text-overflow: ellipsis;

@@ -1,6 +1,6 @@
-import { filtersList } from './filters.js';
 import { formatText } from './string.js';
 import { stopwords } from './stopwords.js';
+import { filtersList } from './filters.js';
 
 const getFormattedItemsList = (recipe, getItems) => {
   const items = getItems(recipe);
@@ -21,7 +21,7 @@ export const searchRecipes = (recipes, searchTerms = '') => {
     recipe => formatText(recipe.description),
     recipe => getFormattedItemsList(recipe, recipe => recipe.ingredients.map(item => item.ingredient)),
     recipe => getFormattedItemsList(recipe, recipe => [recipe.appliance]),
-    recipe => getFormattedItemsList(recipe, recipe => recipe.ustensils),
+    recipe => getFormattedItemsList(recipe, recipe => recipe.ustensils)
   ];
 
   let setRecipes = [ ...recipes ];

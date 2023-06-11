@@ -123,6 +123,7 @@ i {
   grid-template-columns: repeat(3, 26.3888888889vw);
   justify-content: space-between;
   row-gap: 3.4722222222vw;
+  margin-bottom: 3.4722222222vw;
 }
 
 .recipe-card {
@@ -188,6 +189,15 @@ i {
   font-family: "Roboto", sans-serif;
   font-size: 0.8333333333vw;
   line-height: 100%;
+}
+
+#recipes .empty {
+  display: none;
+  grid-column: 1/4;
+}
+
+#recipes .empty.show {
+  display: block;
 }
 
 #filters {
@@ -260,6 +270,8 @@ i {
   top: 3.8194444444vw;
   z-index: 100;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(0, 0, 0, 0);
   display: none;
   flex-wrap: wrap;
   border-color: transparent;
@@ -271,10 +283,19 @@ i {
   background-color: inherit;
 }
 
+.filter .filter-list::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.filter .filter-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
 .filter .filter-item {
   overflow: hidden;
   padding: 0.3472222222vw;
-  width: 14.7916666667vw;
+  width: 33.3333333333%;
   font-size: 1.25vw;
   line-height: 1.5vw;
   text-overflow: ellipsis;

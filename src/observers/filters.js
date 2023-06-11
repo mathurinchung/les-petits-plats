@@ -7,15 +7,20 @@ export default class FiltersObserver {
   }
 
   init() {
+    document.body.addEventListener('click', () => {
+      this.filterElements.forEach(element => {
+        const notElements = [ ...this.filterElements ].filter(el => el !== element);
+        this.filterContainer.handleCloseFilter(notElements);
+      });
+    });
+
     this.filterElements.forEach(element => {
       const notElements = [ ...this.filterElements ].filter(el => el !== element);
       const filterInputElement = element.querySelector('input');
       const filterItemElements = element.querySelectorAll('.filter-item');
 
-      const handleToggleFilter = this.filterContainer.handleToggleFilter(element, notElements);
-      element.addEventListener('click', handleToggleFilter);
-
-      document.body.addEventListener('click', () => this.filterContainer.handleCloseFilter(notElements));
+      const handleOpenFilter = this.filterContainer.handleOpenFilter(element, notElements);
+      element.addEventListener('click', handleOpenFilter);
 
       filterInputElement.addEventListener('click', (event) => event.stopPropagation());
 

@@ -1,22 +1,26 @@
 import { formatText } from '../utils/string.js';
 
 export default class FilterContainer {
-  handleToggleFilter(element, notElements) {
+  handleOpenFilter(element, notElements) {
     return (event) => {
       event.preventDefault();
       event.stopPropagation();
 
       this.handleCloseFilter(notElements);
 
-      element.classList.toggle('show');
-      element.querySelector('input').focus();
+      if (!element.classList.contains('show')) {
+        element.classList.add('show');
+        element.querySelector('input').focus();
+      }
     };
   }
 
   handleCloseFilter(notElements) {
     notElements.forEach(el => {
-      el.classList.contains('show') && el.classList.remove('show');
-      el.querySelector('input').value = '';
+      if (el.classList.contains('show')) {
+        el.classList.remove('show');
+        el.querySelector('input').value = '';
+      }
     });
   }
 
@@ -25,11 +29,11 @@ export default class FilterContainer {
       const searchTerm = formatText(event.target.value);
       
       if (searchTerm.length >= 3 || searchTerm.length === 0) {
-        const filterItems = [...filterItemElements].filter(element => !element.classList.contains('none'));
-        const isMatchTerm = filterItems.filter(el => !el.classList.contains('none') && formatText(el.textContent).includes(searchTerm));
-
-        filterItems.forEach((item) => {
-          item.classList.toggle('not', !isMatchTerm.map(el => el.textContent).includes(item.textContent));
+        filterItemElements.forEach(element => {
+          if (!element.classList.contains('none')) {
+            const isMatchTerm = formatText(element.textContent).includes(searchTerm);
+            element.classList.toggle('not', !isMatchTerm);
+          }
         });
       }
     };

@@ -8,7 +8,7 @@ export default class Subject {
   }
 
   detach(observer) {
-    this.observers.filter(obs => obs !== observer)
+    this.observers = this.observers.filter(obs => obs !== observer)
   }
 
   dispatch() {

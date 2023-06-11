@@ -1,18 +1,30 @@
-import Keywordcontainer from '../containers/keyword.js';
+import KeywordContainer from '../containers/keyword.js';
 
 export default class KeywordObserver {
-  constructor(updateRender, renderKeyword) {
-    this.keywordContainer = new Keywordcontainer(updateRender, renderKeyword);
+  constructor(subject, renderKeyword) {
+    this.subject = subject;
+    this.keywordContainer = new KeywordContainer(subject, renderKeyword);
+  }
+
+  update(terms) {
+    this.subject.updateRender(terms);
+    this.subject.detach(this);
   }
 
   init() {
-    const filterItemElements = document.querySelectorAll('.filter-item');
-    const keywordListElements = document.querySelectorAll('.keyword-list');
-
     const handleAddKeyword = this.keywordContainer.handleAddKeyword();
-    filterItemElements.forEach(itemElement => itemElement.addEventListener('click', handleAddKeyword));
-
     const handleRemoveKeyword = this.keywordContainer.handleRemoveKeyword();
-    keywordListElements.forEach(itemElement => itemElement.addEventListener('click', handleRemoveKeyword));
+
+    const filterItemElements = document.querySelectorAll('.filter-item');
+    filterItemElements.forEach(itemElement => itemElement.addEventListener('click', (event) => {
+      this.subject.attach(this);
+      handleAddKeyword(event);
+    }));
+
+    const keywordListElements = document.querySelectorAll('.keyword-list');
+    keywordListElements.forEach(itemElement => itemElement.addEventListener('click', (event) => {
+      this.subject.attach(this);
+      handleRemoveKeyword(event);
+    }));
   }
 }

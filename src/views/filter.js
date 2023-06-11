@@ -1,25 +1,15 @@
 export default class FilterView {
-  constructor(type, filters) {
-    this.type = type;
+  constructor(filterType, filters) {
+    this.filterByType = {
+      ingredients: { label: 'Ingredients', placeholder: 'ingrédients', list: 'ingredients' },
+      appliances: { label: 'Appareils', placeholder: 'appareil', list: 'appliances' },
+      ustensils: { label: 'Ustensiles', placeholder: 'ustensile', list: 'ustensils' }
+    };
 
-    switch (this.type) {
-      case 'ingredients':
-        this.label = 'Ingredients';
-        this.placeholder = 'ingrédients';
-        this.list = filters.ingredients;
-        break;
-      case 'appliances':
-        this.label = 'Appareils';
-        this.placeholder = 'appareil';
-        this.list = filters.appliances;
-        break;
-      case 'ustensils':
-        this.label = 'Ustensiles';
-        this.placeholder = 'ustensile';
-        this.list = filters.ustensils;
-        break;
-      default: null;
-    }
+    this.filterType = filterType;
+    this.label = this.filterByType[filterType].label;
+    this.placeholder = this.filterByType[filterType].placeholder;
+    this.list = filters[this.filterByType[filterType].list];
   }
 
   #FilterListDOM() {
@@ -28,14 +18,14 @@ export default class FilterView {
 
   displayFilter() {
     return (`
-      <div class="filter filter-${ this.type }">
+      <div class="filter filter-${ this.filterType }">
         <form>
-          <label for="input-${ this.type }">${ this.label }</label>
-          <input id="input-${ this.type }" type="search" placeholder="Rechercher un ${ this.placeholder }">
+          <label for="input-${ this.filterType }">${ this.label }</label>
+          <input id="input-${ this.filterType }" type="search" placeholder="Rechercher un ${ this.placeholder }">
           <i class="icon-chevron-down"></i>
         </form>
 
-        <ul class="filter-list filter-list-${ this.type }">${ this.#FilterListDOM() }</ul>
+        <ul class="filter-list filter-list-${ this.filterType }">${ this.#FilterListDOM() }</ul>
       </div>
     `);
   }

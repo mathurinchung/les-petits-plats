@@ -1,25 +1,26 @@
 import { setString } from './string.js'
 
 const hasItem = (array, string) => {
-  if (string && !array.has(string.slice(0, -1).trim())) array.add(string.trim());
+  const trimmedString = string.trim();
+  const singularString = trimmedString.endsWith('s') ? trimmedString.slice(0, -1) : trimmedString;
+  const pluralString = !trimmedString.endsWith('s') ? trimmedString + 's' : trimmedString;
+
+  if (array.includes(singularString) || array.includes(pluralString)) return;
+  array.push(trimmedString);
 }
 
-const getUniqueRecipeItems = (recipes, getItem) => {
-  const array = new Set();
+const processRecipes = (array, items, transformer) => {
+  items.forEach(item => hasItem(array, transformer(item)));
+}
+
+export const filtersList = (recipes) => {
+  const list = { ingredients: [], appliances: [], ustensils: [] };
 
   recipes.forEach(recipe => {
-    const items = getItem(recipe);
-    items.forEach(item => {
-      const string = setString(item);
-      hasItem(array, string);
-    });
+    processRecipes(list.ingredients, recipe.ingredients, item => setString(item.ingredient));
+    processRecipes(list.appliances, [recipe.appliance], item => setString(item));
+    processRecipes(list.ustensils, recipe.ustensils, item => setString(item));
   });
 
-  return [ ...array ];
+  return list;
 };
-
-export const filtersList = (recipes) => ({
-  ingredients: getUniqueRecipeItems(recipes, recipe => recipe.ingredients.map(item => item.ingredient)),
-  appliances: getUniqueRecipeItems(recipes, recipe => [recipe.appliance]),
-  ustensils: getUniqueRecipeItems(recipes, recipe => recipe.ustensils)
-});
